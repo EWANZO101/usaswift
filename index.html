@@ -57,6 +57,12 @@
                         url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><rect width="1000" height="1000" fill="%23000"/><circle cx="200" cy="200" r="2" fill="%2300d4ff" opacity="0.3"/><circle cx="800" cy="300" r="1" fill="%23ff0080" opacity="0.4"/><circle cx="400" cy="700" r="2" fill="%2300ffff" opacity="0.2"/></svg>');
         }
         
+        .glass-effect {
+            background: rgba(17, 25, 40, 0.75);
+            backdrop-filter: blur(16px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.125);
+        }
+        
         .card-glow:hover {
             box-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
             transform: translateY(-8px);
@@ -151,6 +157,26 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: linear-gradient(45deg, #00d4ff, #ff0080);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
     </style>
 </head>
 <body class="bg-black text-white overflow-x-hidden">
@@ -167,29 +193,166 @@
     <nav class="fixed top-0 w-full bg-black/90 backdrop-blur-sm z-40 border-b border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
                 <div class="flex items-center">
                     <i class="fas fa-mountain text-2xl text-primary-500 glow-text mr-3"></i>
                     <span class="text-xl font-bold">Swift Peak</span>
                     <span class="text-sm text-gray-400 ml-2">FiveM Services</span>
                 </div>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#home" class="nav-link text-gray-300 hover:text-primary-500 transition-all duration-300">Home</a>
-                    <a href="#services" class="nav-link text-gray-300 hover:text-primary-500 transition-all duration-300">Services</a>
-                    <a href="#portfolio" class="nav-link text-gray-300 hover:text-primary-500 transition-all duration-300">Portfolio</a>
-                    <a href="#about" class="nav-link text-gray-300 hover:text-primary-500 transition-all duration-300">About</a>
-                    <a href="#contact" class="nav-link text-gray-300 hover:text-primary-500 transition-all duration-300">Contact</a>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex items-center space-x-4">
+                    <a href="#home" class="nav-link text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-slate-700/50 transition-all duration-300">
+                        Home
+                    </a>
+
+                    <!-- Services Dropdown -->
+                    <div class="relative group">
+                        <button class="text-slate-300 hover:text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-slate-700/50 transition-all duration-300 flex items-center">
+                            Services <i class="fas fa-chevron-down ml-1 text-xs transition-transform group-hover:rotate-180"></i>
+                        </button>
+                        <div class="absolute top-full left-0 mt-2 w-72 glass-effect rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50">
+                            <div class="p-3">
+                                <a href="#services" class="block px-4 py-3 text-sm text-slate-300 hover:text-white hover:bg-slate-700/50 rounded-lg transition-all duration-200">
+                                    <i class="fas fa-cloud mr-3 text-blue-400 w-4"></i>Cloud Hosting
+                                </a>
+                                <a href="https://wemx.swiftpeakhosting.com/snailycadnote" class="block px-4 py-3 text-sm text-slate-300 hover:text-white hover:bg-slate-700/50 rounded-lg transition-all duration-200">
+                                    <i class="fas fa-gamepad mr-3 text-yellow-400 w-4"></i>SnailyCAD Hosting
+                                </a>
+                                <a href="https://wemx.swiftpeakhosting.com/WeMXVPSPlans" class="block px-4 py-3 text-sm text-slate-300 hover:text-white hover:bg-slate-700/50 rounded-lg transition-all duration-200">
+                                    <i class="fas fa-cogs mr-3 text-purple-400 w-4"></i>WemX Panel Solutions
+                                </a>
+                                <a href="#services" class="block px-4 py-3 text-sm text-slate-300 hover:text-white hover:bg-slate-700/50 rounded-lg transition-all duration-200">
+                                    <i class="fas fa-network-wired mr-3 text-green-400 w-4"></i>Network Infrastructure
+                                </a>
+                                <a href="consultingservices.html" class="block px-4 py-3 text-sm text-slate-300 hover:text-white hover:bg-slate-700/50 rounded-lg transition-all duration-200">
+                                    <i class="fas fa-user-tie mr-3 text-indigo-400 w-4"></i>IT Consulting
+                                </a>
+                                <a href="#services" class="block px-4 py-3 text-sm text-slate-300 hover:text-white hover:bg-slate-700/50 rounded-lg transition-all duration-200">
+                                    <i class="fas fa-shield-alt mr-3 text-red-400 w-4"></i>Managed Services
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="aboutus.html" class="text-slate-300 hover:text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-slate-700/50 transition-all duration-300">About</a>
+                    <a href="https://wemx.swiftpeakhosting.com/Contactus" class="text-slate-300 hover:text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-slate-700/50 transition-all duration-300">Contact</a>
+                    <a href="https://tickets.swiftpeakhosting.com" class="text-slate-300 hover:text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-slate-700/50 transition-all duration-300">
+                        <i class="fas fa-ticket-alt mr-1"></i>Support
+                    </a>
+
+                    <!-- Account Dropdown -->
+                    <div class="relative group">
+                        <button class="text-slate-300 hover:text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-slate-700/50 transition-all duration-300 flex items-center">
+                            <i class="fas fa-user-circle mr-2"></i>Account <i class="fas fa-chevron-down ml-1 text-xs transition-transform group-hover:rotate-180"></i>
+                        </button>
+                        <div class="absolute top-full right-0 mt-2 w-64 glass-effect rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50">
+                            <div class="p-3">
+                                <a href="https://wemxcloud.swiftpeakhosting.com/auth/login" class="block px-4 py-3 text-sm text-slate-300 hover:text-white hover:bg-slate-700/50 rounded-lg transition-all duration-200">
+                                    <i class="fas fa-sign-in-alt mr-3 text-blue-400 w-4"></i>Login
+                                </a>
+                                <a href="https://wemxcloud.swiftpeakhosting.com/auth/register" class="block px-4 py-3 text-sm text-slate-300 hover:text-white hover:bg-slate-700/50 rounded-lg transition-all duration-200">
+                                    <i class="fas fa-user-plus mr-3 text-green-400 w-4"></i>Sign Up
+                                </a>
+                                <div class="border-t border-slate-600/50 my-2"></div>
+                                <a href="https://wemxcloud.swiftpeakhosting.com/dashboard" class="block px-4 py-3 text-sm text-slate-300 hover:text-white hover:bg-slate-700/50 rounded-lg transition-all duration-200">
+                                    <i class="fas fa-tachometer-alt mr-3 text-purple-400 w-4"></i>Dashboard
+                                </a>
+                                <a href="https://wemxcloud.swiftpeakhosting.com/admin" class="block px-4 py-3 text-sm text-slate-300 hover:text-white hover:bg-slate-700/50 rounded-lg transition-all duration-200">
+                                    <i class="fas fa-cog mr-3 text-purple-400 w-4"></i>Admin Panel
+                                </a>
+                                <a href="https://wemxcloud.swiftpeakhosting.com/auth/logout" class="block px-4 py-3 text-sm text-slate-300 hover:text-white hover:bg-slate-700/50 rounded-lg transition-all duration-200">
+                                    <i class="fas fa-sign-out-alt mr-3 text-red-400 w-4"></i>Sign Out
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
                     <button class="btn-neon px-6 py-2 rounded-full text-white font-semibold">
                         Get Sponsored
                     </button>
                 </div>
-                <div class="md:hidden">
-                    <button id="mobile-menu-btn" class="text-gray-300">
-                        <i class="fas fa-bars text-xl"></i>
+
+                <!-- Mobile Menu Button -->
+                <div class="lg:hidden">
+                    <button type="button" id="mobile-menu-button" class="text-slate-400 hover:text-white p-2 rounded-lg hover:bg-slate-700/50 transition-all duration-300">
+                        <i class="fas fa-bars text-xl" id="mobile-menu-icon"></i>
                     </button>
                 </div>
             </div>
         </div>
     </nav>
+
+    <!-- Mobile Menu -->
+    <div class="lg:hidden fixed inset-0 z-40 transition-all duration-300 transform translate-x-full" id="mobile-menu">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-slate-900/75 backdrop-blur-sm" onclick="closeMobileMenu()"></div>
+
+        <!-- Menu Panel -->
+        <div class="absolute right-0 top-0 h-full w-80 max-w-sm glass-effect border-l border-slate-700/50">
+            <div class="flex flex-col h-full pt-20">
+                <!-- Header -->
+                <div class="flex items-center justify-between p-6 border-b border-slate-700/50 bg-slate-900/50">
+                    <div class="flex items-center space-x-3">
+                        <i class="fas fa-mountain text-primary-500 text-xl"></i>
+                        <span class="text-primary-500 font-bold">Swift Peak</span>
+                    </div>
+                    <button onclick="closeMobileMenu()" class="text-slate-400 hover:text-white p-2 rounded-lg hover:bg-slate-700/50 transition">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+
+                <!-- Menu Items -->
+                <div class="flex-1 overflow-y-auto p-6">
+                    <div class="space-y-4">
+                        <a href="#home" class="block text-white hover:text-primary-500 py-2 transition-colors" onclick="closeMobileMenu()">Home</a>
+                        
+                        <!-- Mobile Services Menu -->
+                        <div class="border-b border-slate-700/50 pb-4">
+                            <div class="text-white font-semibold mb-3">Services</div>
+                            <div class="space-y-2 ml-4">
+                                <a href="#services" class="block text-slate-300 hover:text-white py-1 text-sm transition-colors" onclick="closeMobileMenu()">
+                                    <i class="fas fa-car mr-2 text-blue-400"></i>Vehicle Tunes
+                                </a>
+                                <a href="#services" class="block text-slate-300 hover:text-white py-1 text-sm transition-colors" onclick="closeMobileMenu()">
+                                    <i class="fas fa-code mr-2 text-green-400"></i>Custom Scripts
+                                </a>
+                                <a href="#services" class="block text-slate-300 hover:text-white py-1 text-sm transition-colors" onclick="closeMobileMenu()">
+                                    <i class="fas fa-palette mr-2 text-purple-400"></i>Graphics & GFX
+                                </a>
+                                <a href="https://wemx.swiftpeakhosting.com/snailycadnote" class="block text-slate-300 hover:text-white py-1 text-sm transition-colors" onclick="closeMobileMenu()">
+                                    <i class="fas fa-gamepad mr-2 text-yellow-400"></i>SnailyCAD Hosting
+                                </a>
+                            </div>
+                        </div>
+
+                        <a href="#portfolio" class="block text-white hover:text-primary-500 py-2 transition-colors" onclick="closeMobileMenu()">Portfolio</a>
+                        <a href="#about" class="block text-white hover:text-primary-500 py-2 transition-colors" onclick="closeMobileMenu()">About</a>
+                        <a href="#contact" class="block text-white hover:text-primary-500 py-2 transition-colors" onclick="closeMobileMenu()">Contact</a>
+                        <a href="https://tickets.swiftpeakhosting.com" class="block text-white hover:text-primary-500 py-2 transition-colors" onclick="closeMobileMenu()">
+                            <i class="fas fa-ticket-alt mr-2"></i>Support
+                        </a>
+                    </div>
+
+                    <!-- Mobile Account Section -->
+                    <div class="mt-8 border-t border-slate-700/50 pt-6">
+                        <div class="text-white font-semibold mb-3">Account</div>
+                        <div class="space-y-2">
+                            <a href="https://wemxcloud.swiftpeakhosting.com/auth/login" class="block text-slate-300 hover:text-white py-1 text-sm transition-colors">
+                                <i class="fas fa-sign-in-alt mr-2 text-blue-400"></i>Login
+                            </a>
+                            <a href="https://wemxcloud.swiftpeakhosting.com/auth/register" class="block text-slate-300 hover:text-white py-1 text-sm transition-colors">
+                                <i class="fas fa-user-plus mr-2 text-green-400"></i>Sign Up
+                            </a>
+                            <a href="https://wemxcloud.swiftpeakhosting.com/dashboard" class="block text-slate-300 hover:text-white py-1 text-sm transition-colors">
+                                <i class="fas fa-tachometer-alt mr-2 text-purple-400"></i>Dashboard
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section id="home" class="hero-bg min-h-screen flex items-center relative overflow-hidden">
@@ -205,10 +368,10 @@
                     Make your server stand out with our premium FiveM development services.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 mb-12">
-                    <button class="btn-neon px-8 py-4 rounded-full text-white font-semibold text-lg">
+                    <button class="btn-neon px-8 py-4 rounded-full text-white font-semibold text-lg" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})">
                         <i class="fas fa-shopping-cart mr-2"></i>View Services
                     </button>
-                    <button class="border-2 border-primary-500 hover:bg-primary-500/20 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300">
+                    <button class="border-2 border-primary-500 hover:bg-primary-500/20 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
                         <i class="fas fa-star mr-2"></i>Get Sponsored
                     </button>
                 </div>
@@ -722,7 +885,7 @@
                             <i class="fab fa-instagram"></i>
                         </a>
                         <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary-500 transition-all duration-300">
-                            <i class="fab fa-youtube"></i>
+                            <i class="fas fa-youtube"></i>
                         </a>
                     </div>
                 </div>
@@ -730,12 +893,12 @@
                 <div>
                     <h3 class="font-bold text-white mb-4">Services</h3>
                     <ul class="space-y-2 text-gray-400">
-                        <li><a href="#" class="hover:text-primary-500 transition-colors">Vehicle Tunes</a></li>
-                        <li><a href="#" class="hover:text-primary-500 transition-colors">Custom Scripts</a></li>
-                        <li><a href="#" class="hover:text-primary-500 transition-colors">Graphics & GFX</a></li>
-                        <li><a href="#" class="hover:text-primary-500 transition-colors">EUP & Clothing</a></li>
-                        <li><a href="#" class="hover:text-primary-500 transition-colors">Weapons & Props</a></li>
-                        <li><a href="#" class="hover:text-primary-500 transition-colors">MLO & Mapping</a></li>
+                        <li><a href="#services" class="hover:text-primary-500 transition-colors">Vehicle Tunes</a></li>
+                        <li><a href="#services" class="hover:text-primary-500 transition-colors">Custom Scripts</a></li>
+                        <li><a href="#services" class="hover:text-primary-500 transition-colors">Graphics & GFX</a></li>
+                        <li><a href="#services" class="hover:text-primary-500 transition-colors">EUP & Clothing</a></li>
+                        <li><a href="#services" class="hover:text-primary-500 transition-colors">Weapons & Props</a></li>
+                        <li><a href="#services" class="hover:text-primary-500 transition-colors">MLO & Mapping</a></li>
                     </ul>
                 </div>
                 
@@ -772,6 +935,31 @@
 
     <!-- Scripts -->
     <script>
+        // Mobile Menu Functions
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('mobile-menu-icon');
+            
+            if (mobileMenu.classList.contains('translate-x-full')) {
+                mobileMenu.classList.remove('translate-x-full');
+                mobileMenu.classList.add('translate-x-0');
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-times');
+            } else {
+                closeMobileMenu();
+            }
+        }
+
+        function closeMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('mobile-menu-icon');
+            
+            mobileMenu.classList.add('translate-x-full');
+            mobileMenu.classList.remove('translate-x-0');
+            menuIcon.classList.add('fa-bars');
+            menuIcon.classList.remove('fa-times');
+        }
+
         // Loading Screen
         window.addEventListener('load', function() {
             setTimeout(() => {
@@ -796,12 +984,8 @@
             });
         });
 
-        // Mobile Menu
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        mobileMenuBtn.addEventListener('click', function() {
-            // Add mobile menu functionality here
-            console.log('Mobile menu clicked');
-        });
+        // Mobile Menu Button Event
+        document.getElementById('mobile-menu-button').addEventListener('click', toggleMobileMenu);
 
         // Intersection Observer for animations
         const observerOptions = {
