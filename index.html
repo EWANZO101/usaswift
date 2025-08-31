@@ -61,16 +61,34 @@
                         <span class="text-sm text-gray-400 ml-2">LTD USA</span>
                     </div>
                 </div>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#" class="nav-link text-gray-300 hover:text-white transition-colors active" onclick="showPage('home')">Home</a>
-                    <a href="#" class="nav-link text-gray-300 hover:text-white transition-colors" onclick="showPage('about')">About</a>
-                    <a href="#" class="nav-link text-gray-300 hover:text-white transition-colors" onclick="showPage('services')">Services</a>
-                    <a href="#" class="nav-link text-gray-300 hover:text-white transition-colors" onclick="showPage('pricing')">Pricing</a>
-                    <a href="#" class="nav-link text-gray-300 hover:text-white transition-colors" onclick="showPage('contact')">Contact</a>
-                    <button class="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-lg transition-colors" onclick="showPage('contact')">
-                        Get Started
-                    </button>
-                </div>
+               <div class="hidden md:flex items-center space-x-8">
+    <a href="#" class="nav-link text-gray-300 hover:text-white transition-colors active" onclick="showPage('home')">Home</a>
+    <a href="#" class="nav-link text-gray-300 hover:text-white transition-colors" onclick="showPage('about')">About</a>
+    <a href="#" class="nav-link text-gray-300 hover:text-white transition-colors" onclick="showPage('services')">Services</a>
+    <a href="#" class="nav-link text-gray-300 hover:text-white transition-colors" onclick="showPage('pricing')">Pricing</a>
+    <a href="#" class="nav-link text-gray-300 hover:text-white transition-colors" onclick="showPage('contact')">Contact</a>
+
+    <!-- Dropdown -->
+    <div class="relative group">
+        <button class="flex items-center text-gray-300 hover:text-white transition-colors focus:outline-none">
+            Account
+            <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+        </button>
+        <div class="absolute right-0 mt-2 w-40 bg-white rounded-lg shadow-lg opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-opacity">
+            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100" onclick="showPage('login')">Login</a>
+            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100" onclick="showPage('signup')">Signup</a>
+            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100" onclick="showPage('dashboard')">Dashboard</a>
+            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100" onclick="showPage('admin')">Admin</a>
+        </div>
+    </div>
+
+    <button class="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-lg transition-colors" onclick="showPage('contact')">
+        Get Started
+    </button>
+</div>
+
                 <div class="md:hidden flex items-center">
                     <button class="text-gray-300 hover:text-white" onclick="toggleMobileMenu()">
                         <i class="fas fa-bars text-xl"></i>
