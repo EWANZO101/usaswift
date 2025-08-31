@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FiveM Server Hosting - Premium Gaming Servers</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #00d4ff, #ff6b35);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #b8b8b8;
+            margin-bottom: 40px;
+        }
+
+        .plans-section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #00d4ff;
+        }
+
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .plan-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .plan-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #00d4ff, #ff6b35);
+        }
+
+        .plan-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 212, 255, 0.5);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+        }
+
+        .plan-name {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #00d4ff;
+            font-weight: 600;
+        }
+
+        .plan-price {
+            font-size: 3rem;
+            margin-bottom: 30px;
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .plan-price span {
+            font-size: 1.2rem;
+            color: #b8b8b8;
+        }
+
+        .plan-features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 30px;
+        }
+
+        .plan-features li {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+            color: #e0e0e0;
+        }
+
+        .plan-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #00d4ff;
+            font-weight: bold;
+        }
+
+        .plan-features .drives {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .plan-features .drives li {
+            color: #c0c0c0;
+            font-size: 0.95rem;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #00d4ff, #0099cc);
+            color: white;
+            padding: 15px 35px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.4);
+        }
+
+        .medium-plan {
+            border: 2px solid #ff6b35;
+            position: relative;
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(45deg, #ff6b35, #ff8c42);
+            color: white;
+            padding: 8px 25px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .features-section {
+            padding: 80px 0;
+            background: rgba(0, 0, 0, 0.2);
+            margin-top: 80px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #00d4ff;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        .feature-card p {
+            color: #b8b8b8;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .plans-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .plan-card {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="hero">
+                <h1>FiveM Server Hosting</h1>
+                <p>Premium, high-performance hosting solutions for your FiveM community</p>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="plans-section">
+            <div class="container">
+                <h2 class="section-title">Hosting Plans</h2>
+                <div class="plans-grid">
+                    <!-- Low Plan -->
+                    <div class="plan-card">
+                        <h3 class="plan-name">Low Plan</h3>
+                        <div class="plan-price">$10<span>/month</span></div>
+                        <ul class="plan-features">
+                            <li><strong>RAM:</strong> 6 GB</li>
+                            <li><strong>Drives:</strong>
+                                <ul class="drives">
+                                    <li>Boot Drive – 100 GB</li>
+                                    <li>Server Files Drive – 120 GB</li>
+                                </ul>
+                            </li>
+                            <li><strong>Dedicated IP:</strong> IPv4</li>
+                            <li><strong>Bandwidth:</strong> 200 Mbps Up / Down</li>
+                        </ul>
+                        <button class="cta-button">Get Started</button>
+                    </div>
+
+                    <!-- Medium Plan -->
+                    <div class="plan-card medium-plan">
+                        <div class="popular-badge">Most Popular</div>
+                        <h3 class="plan-name">Medium Plan</h3>
+                        <div class="plan-price">$20<span>/month</span></div>
+                        <ul class="plan-features">
+                            <li><strong>RAM:</strong> 10 GB</li>
+                            <li><strong>Drives:</strong>
+                                <ul class="drives">
+                                    <li>Boot Drive – 120 GB</li>
+                                    <li>Server Files Drive – 200 GB</li>
+                                </ul>
+                            </li>
+                            <li><strong>Dedicated IP:</strong> IPv4</li>
+                            <li><strong>Bandwidth:</strong> 400 Mbps Up / Down</li>
+                        </ul>
+                        <button class="cta-button">Get Started</button>
+                    </div>
+
+                    <!-- High Plan -->
+                    <div class="plan-card">
+                        <h3 class="plan-name">High Plan</h3>
+                        <div class="plan-price">$40<span>/month</span></div>
+                        <ul class="plan-features">
+                            <li><strong>RAM:</strong> 16 GB</li>
+                            <li><strong>Drives:</strong>
+                                <ul class="drives">
+                                    <li>Boot Drive – 120 GB</li>
+                                    <li>Server Files Drive – 300 GB</li>
+                                </ul>
+                            </li>
+                            <li><strong>Dedicated IP:</strong> IPv4</li>
+                            <li><strong>Bandwidth:</strong> 550 Mbps Up / Down</li>
+                        </ul>
+                        <button class="cta-button">Get Started</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features-section">
+            <div class="container">
+                <h2 class="section-title">Why Choose Our Hosting?</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>High Performance</h3>
+                        <p>Optimized servers with SSD storage and dedicated resources for smooth gameplay</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🛡️</div>
+                        <h3>DDoS Protection</h3>
+                        <p>Advanced protection against attacks to keep your server online 24/7</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔧</div>
+                        <h3>Easy Setup</h3>
+                        <p>One-click installation and user-friendly control panel for effortless management</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📞</div>
+                        <h3>24/7 Support</h3>
+                        <p>Round-the-clock technical support from FiveM hosting experts</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
