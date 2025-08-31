@@ -177,6 +177,130 @@
         .nav-link:hover::after {
             width: 100%;
         }
+
+        /* Hosting Plans Styles */
+        .hosting-plan-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hosting-plan-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #00d4ff, #ff6b35);
+        }
+
+        .hosting-plan-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 212, 255, 0.5);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+        }
+
+        .plan-name {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #00d4ff;
+            font-weight: 600;
+        }
+
+        .plan-price {
+            font-size: 3rem;
+            margin-bottom: 30px;
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .plan-price span {
+            font-size: 1.2rem;
+            color: #b8b8b8;
+        }
+
+        .plan-features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 30px;
+        }
+
+        .plan-features li {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+            color: #e0e0e0;
+        }
+
+        .plan-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #00d4ff;
+            font-weight: bold;
+        }
+
+        .plan-features .drives {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .plan-features .drives li {
+            color: #c0c0c0;
+            font-size: 0.95rem;
+        }
+
+        .medium-plan {
+            border: 2px solid #ff6b35;
+            position: relative;
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(45deg, #ff6b35, #ff8c42);
+            color: white;
+            padding: 8px 25px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .hosting-features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .hosting-feature-card {
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .hosting-feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #00d4ff;
+        }
+
+        .hosting-feature-card h3 {
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        .hosting-feature-card p {
+            color: #b8b8b8;
+        }
     </style>
 </head>
 <body class="bg-black text-white overflow-x-hidden">
@@ -215,6 +339,9 @@
                             <div class="p-3">
                                 <a href="#services" class="block px-4 py-3 text-sm text-slate-300 hover:text-white hover:bg-slate-700/50 rounded-lg transition-all duration-200">
                                     <i class="fas fa-cloud mr-3 text-blue-400 w-4"></i>Cloud Hosting
+                                </a>
+                                <a href="#hosting" class="block px-4 py-3 text-sm text-slate-300 hover:text-white hover:bg-slate-700/50 rounded-lg transition-all duration-200">
+                                    <i class="fas fa-server mr-3 text-green-400 w-4"></i>Server Hosting
                                 </a>
                                 <a href="https://wemx.swiftpeakhosting.com/snailycadnote" class="block px-4 py-3 text-sm text-slate-300 hover:text-white hover:bg-slate-700/50 rounded-lg transition-all duration-200">
                                     <i class="fas fa-gamepad mr-3 text-yellow-400 w-4"></i>SnailyCAD Hosting
@@ -320,6 +447,9 @@
                                 <a href="#services" class="block text-slate-300 hover:text-white py-1 text-sm transition-colors" onclick="closeMobileMenu()">
                                     <i class="fas fa-palette mr-2 text-purple-400"></i>Graphics & GFX
                                 </a>
+                                <a href="#hosting" class="block text-slate-300 hover:text-white py-1 text-sm transition-colors" onclick="closeMobileMenu()">
+                                    <i class="fas fa-server mr-2 text-yellow-400"></i>Server Hosting
+                                </a>
                                 <a href="https://wemx.swiftpeakhosting.com/snailycadnote" class="block text-slate-300 hover:text-white py-1 text-sm transition-colors" onclick="closeMobileMenu()">
                                     <i class="fas fa-gamepad mr-2 text-yellow-400"></i>SnailyCAD Hosting
                                 </a>
@@ -364,7 +494,7 @@
                     Built For <span class="text-accent-500">Your Server</span>
                 </h1>
                 <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl">
-                    Professional vehicle tunes, custom scripts, stunning graphics, exclusive EUP, and more. 
+                    Professional vehicle tunes, custom scripts, stunning graphics, exclusive EUP, server hosting, and more. 
                     Make your server stand out with our premium FiveM development services.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 mb-12">
@@ -422,7 +552,317 @@
                 <div class="service-card bg-gray-900/50 backdrop-blur-sm rounded-2xl p-8 card-glow border border-gray-800">
                     <div class="text-center mb-6">
                         <i class="service-icon fas fa-car text-5xl text-gray-400 mb-4"></i>
-                        <h3 class="text-2xl font-bold mb-2">Custom Vehicle Tunes</h3>
+                        <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-center">
+                                <i class="fab fa-discord text-2xl text-primary-500 mr-4"></i>
+                                <div>
+                                    <div class="font-semibold text-white">Discord</div>
+                                    <div class="text-gray-300">SwiftPeak#0001</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-envelope text-2xl text-accent-500 mr-4"></i>
+                                <div>
+                                    <div class="font-semibold text-white">Email</div>
+                                    <div class="text-gray-300">services@swiftpeak.dev</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-clock text-2xl text-neon-blue mr-4"></i>
+                                <div>
+                                    <div class="font-semibold text-white">Response Time</div>
+                                    <div class="text-gray-300">Usually within 2-4 hours</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-globe text-2xl text-neon-purple mr-4"></i>
+                                <div>
+                                    <div class="font-semibold text-white">Timezone</div>
+                                    <div class="text-gray-300">EST (GMT-5)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Support -->
+                    <div class="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700">
+                        <h3 class="text-2xl font-bold mb-6">Quick Actions</h3>
+                        <div class="space-y-4">
+                            <button class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-4 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center">
+                                <i class="fab fa-discord text-xl mr-3"></i>Join Our Discord
+                            </button>
+                            <button class="w-full bg-gray-700 hover:bg-gray-600 text-white py-4 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center">
+                                <i class="fas fa-ticket-alt text-xl mr-3"></i>Open Support Ticket
+                            </button>
+                            <button class="w-full bg-green-600 hover:bg-green-700 text-white py-4 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center">
+                                <i class="fas fa-star text-xl mr-3"></i>Request Sponsorship
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Quick Links -->
+                    <div class="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700">
+                        <h3 class="text-2xl font-bold mb-6">FAQ</h3>
+                        <div class="space-y-4 text-sm">
+                            <div>
+                                <div class="font-semibold text-primary-500 mb-1">What's included with sponsorship?</div>
+                                <div class="text-gray-300">Free custom assets, priority support, and promotional features.</div>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-primary-500 mb-1">How long does delivery take?</div>
+                                <div class="text-gray-300">Most projects are completed within 24-48 hours.</div>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-primary-500 mb-1">Do you offer revisions?</div>
+                                <div class="text-gray-300">Yes, we include free revisions until you're satisfied.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="col-span-2">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-mountain text-2xl text-primary-500 glow-text mr-3"></i>
+                        <span class="text-xl font-bold">Swift Peak FiveM</span>
+                    </div>
+                    <p class="text-gray-400 mb-6 max-w-md">
+                        Professional FiveM development services. Custom vehicles, scripts, graphics, EUP, 
+                        and more. Making your server stand out since 2021.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary-500 transition-all duration-300">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary-500 transition-all duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary-500 transition-all duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary-500 transition-all duration-300">
+                            <i class="fas fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="font-bold text-white mb-4">Services</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#services" class="hover:text-primary-500 transition-colors">Vehicle Tunes</a></li>
+                        <li><a href="#services" class="hover:text-primary-500 transition-colors">Custom Scripts</a></li>
+                        <li><a href="#services" class="hover:text-primary-500 transition-colors">Graphics & GFX</a></li>
+                        <li><a href="#services" class="hover:text-primary-500 transition-colors">EUP & Clothing</a></li>
+                        <li><a href="#services" class="hover:text-primary-500 transition-colors">Weapons & Props</a></li>
+                        <li><a href="#services" class="hover:text-primary-500 transition-colors">MLO & Mapping</a></li>
+                        <li><a href="#hosting" class="hover:text-primary-500 transition-colors">Server Hosting</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-bold text-white mb-4">Support</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-primary-500 transition-colors">Discord Support</a></li>
+                        <li><a href="#" class="hover:text-primary-500 transition-colors">Installation Guides</a></li>
+                        <li><a href="#" class="hover:text-primary-500 transition-colors">Sponsorship Info</a></li>
+                        <li><a href="#" class="hover:text-primary-500 transition-colors">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-primary-500 transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-primary-500 transition-colors">Refund Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <div class="text-gray-400 mb-4 md:mb-0">
+                    © 2024 Swift Peak FiveM Services. All rights reserved.
+                </div>
+                <div class="flex items-center space-x-4 text-sm text-gray-400">
+                    <span class="flex items-center">
+                        <i class="fas fa-shield-alt text-primary-500 mr-2"></i>
+                        Secure Payments
+                    </span>
+                    <span class="flex items-center">
+                        <i class="fas fa-clock text-accent-500 mr-2"></i>
+                        24-48h Delivery
+                    </span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile Menu Functions
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('mobile-menu-icon');
+            
+            if (mobileMenu.classList.contains('translate-x-full')) {
+                mobileMenu.classList.remove('translate-x-full');
+                mobileMenu.classList.add('translate-x-0');
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-times');
+            } else {
+                closeMobileMenu();
+            }
+        }
+
+        function closeMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('mobile-menu-icon');
+            
+            mobileMenu.classList.add('translate-x-full');
+            mobileMenu.classList.remove('translate-x-0');
+            menuIcon.classList.add('fa-bars');
+            menuIcon.classList.remove('fa-times');
+        }
+
+        // Loading Screen
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('loading-screen').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('loading-screen').style.display = 'none';
+                }, 500);
+            }, 1500);
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Mobile Menu Button Event
+        document.getElementById('mobile-menu-button').addEventListener('click', toggleMobileMenu);
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe service cards and hosting cards
+        document.querySelectorAll('.service-card, .hosting-plan-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(50px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('bg-black');
+                nav.classList.remove('bg-black/90');
+            } else {
+                nav.classList.remove('bg-black');
+                nav.classList.add('bg-black/90');
+            }
+        });
+
+        // Form handling
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(e.target);
+            
+            // Show success message
+            const button = e.target.querySelector('button[type="submit"]');
+            const originalText = button.innerHTML;
+            
+            button.innerHTML = '<i class="fas fa-check mr-2"></i>Message Sent!';
+            button.classList.add('bg-green-600');
+            
+            setTimeout(() => {
+                button.innerHTML = originalText;
+                button.classList.remove('bg-green-600');
+                e.target.reset();
+            }, 3000);
+        });
+
+        // Add hover effects to service cards and hosting cards
+        document.querySelectorAll('.service-card, .hosting-plan-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Particle effect for hero section (simplified)
+        function createParticles() {
+            const heroSection = document.querySelector('#home');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'absolute w-1 h-1 bg-primary-500 rounded-full opacity-20';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animation = `float ${Math.random() * 3 + 2}s ease-in-out infinite`;
+                particle.style.animationDelay = Math.random() * 2 + 's';
+                heroSection.appendChild(particle);
+            }
+        }
+
+        // Initialize particles
+        createParticles();
+
+        // Add typing effect to hero text (optional enhancement)
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.innerHTML = '';
+            
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        // Initialize typing effect after loading
+        setTimeout(() => {
+            const heroTitle = document.querySelector('#home h1');
+            if (heroTitle) {
+                const originalText = heroTitle.textContent;
+                typeWriter(heroTitle, originalText, 50);
+            }
+        }, 2000);
+    </script>
+</body>
+</html>bold mb-2">Custom Vehicle Tunes</h3>
                         <p class="text-gray-400 mb-4">Professional vehicle modifications and tuning for your server</p>
                         <div class="price-tag inline-block">From $25</div>
                     </div>
@@ -558,6 +998,108 @@
                             <div class="font-semibold">Quality Guarantee</div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hosting Plans Section -->
+    <section id="hosting" class="py-20 bg-gray-900/30 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 glow-text">FiveM Server Hosting</h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    Premium, high-performance hosting solutions for your FiveM community
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <!-- Low Plan -->
+                <div class="hosting-plan-card">
+                    <h3 class="plan-name">Low Plan</h3>
+                    <div class="plan-price">$10<span>/month</span></div>
+                    <ul class="plan-features">
+                        <li><strong>RAM:</strong> 6 GB</li>
+                        <li><strong>Drives:</strong>
+                            <ul class="drives">
+                                <li>Boot Drive — 100 GB</li>
+                                <li>Server Files Drive — 120 GB</li>
+                            </ul>
+                        </li>
+                        <li><strong>Dedicated IP:</strong> IPv4</li>
+                        <li><strong>Bandwidth:</strong> 200 Mbps Up / Down</li>
+                    </ul>
+                    <button class="w-full bg-primary-500 hover:bg-primary-600 py-3 rounded-lg font-semibold transition-all duration-300">
+                        Get Started
+                    </button>
+                </div>
+
+                <!-- Medium Plan -->
+                <div class="hosting-plan-card medium-plan">
+                    <div class="popular-badge">Most Popular</div>
+                    <h3 class="plan-name">Medium Plan</h3>
+                    <div class="plan-price">$20<span>/month</span></div>
+                    <ul class="plan-features">
+                        <li><strong>RAM:</strong> 10 GB</li>
+                        <li><strong>Drives:</strong>
+                            <ul class="drives">
+                                <li>Boot Drive — 120 GB</li>
+                                <li>Server Files Drive — 200 GB</li>
+                            </ul>
+                        </li>
+                        <li><strong>Dedicated IP:</strong> IPv4</li>
+                        <li><strong>Bandwidth:</strong> 400 Mbps Up / Down</li>
+                    </ul>
+                    <button class="w-full bg-primary-500 hover:bg-primary-600 py-3 rounded-lg font-semibold transition-all duration-300">
+                        Get Started
+                    </button>
+                </div>
+
+                <!-- High Plan -->
+                <div class="hosting-plan-card">
+                    <h3 class="plan-name">High Plan</h3>
+                    <div class="plan-price">$40<span>/month</span></div>
+                    <ul class="plan-features">
+                        <li><strong>RAM:</strong> 16 GB</li>
+                        <li><strong>Drives:</strong>
+                            <ul class="drives">
+                                <li>Boot Drive — 120 GB</li>
+                                <li>Server Files Drive — 300 GB</li>
+                            </ul>
+                        </li>
+                        <li><strong>Dedicated IP:</strong> IPv4</li>
+                        <li><strong>Bandwidth:</strong> 550 Mbps Up / Down</li>
+                    </ul>
+                    <button class="w-full bg-primary-500 hover:bg-primary-600 py-3 rounded-lg font-semibold transition-all duration-300">
+                        Get Started
+                    </button>
+                </div>
+            </div>
+
+            <!-- Hosting Features -->
+            <div class="text-center mb-8">
+                <h3 class="text-3xl font-bold mb-4 glow-text">Why Choose Our Hosting?</h3>
+            </div>
+            <div class="hosting-features-grid">
+                <div class="hosting-feature-card">
+                    <div class="hosting-feature-icon">⚡</div>
+                    <h3>High Performance</h3>
+                    <p>Optimized servers with SSD storage and dedicated resources for smooth gameplay</p>
+                </div>
+                <div class="hosting-feature-card">
+                    <div class="hosting-feature-icon">🛡️</div>
+                    <h3>DDoS Protection</h3>
+                    <p>Advanced protection against attacks to keep your server online 24/7</p>
+                </div>
+                <div class="hosting-feature-card">
+                    <div class="hosting-feature-icon">🔧</div>
+                    <h3>Easy Setup</h3>
+                    <p>One-click installation and user-friendly control panel for effortless management</p>
+                </div>
+                <div class="hosting-feature-card">
+                    <div class="hosting-feature-icon">📞</div>
+                    <h3>24/7 Support</h3>
+                    <p>Round-the-clock technical support from FiveM hosting experts</p>
                 </div>
             </div>
         </div>
@@ -760,6 +1302,7 @@
                                 <option>EUP & Clothing</option>
                                 <option>Weapons & Props</option>
                                 <option>MLO & Mapping</option>
+                                <option>Server Hosting</option>
                                 <option>Sponsorship Inquiry</option>
                                 <option>Other</option>
                             </select>
@@ -789,313 +1332,4 @@
                 <div class="space-y-8">
                     <!-- Contact Information -->
                     <div class="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700">
-                        <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
-                        <div class="space-y-6">
-                            <div class="flex items-center">
-                                <i class="fab fa-discord text-2xl text-primary-500 mr-4"></i>
-                                <div>
-                                    <div class="font-semibold text-white">Discord</div>
-                                    <div class="text-gray-300">SwiftPeak#0001</div>
-                                </div>
-                            </div>
-                            <div class="flex items-center">
-                                <i class="fas fa-envelope text-2xl text-accent-500 mr-4"></i>
-                                <div>
-                                    <div class="font-semibold text-white">Email</div>
-                                    <div class="text-gray-300">services@swiftpeak.dev</div>
-                                </div>
-                            </div>
-                            <div class="flex items-center">
-                                <i class="fas fa-clock text-2xl text-neon-blue mr-4"></i>
-                                <div>
-                                    <div class="font-semibold text-white">Response Time</div>
-                                    <div class="text-gray-300">Usually within 2-4 hours</div>
-                                </div>
-                            </div>
-                            <div class="flex items-center">
-                                <i class="fas fa-globe text-2xl text-neon-purple mr-4"></i>
-                                <div>
-                                    <div class="font-semibold text-white">Timezone</div>
-                                    <div class="text-gray-300">EST (GMT-5)</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Quick Support -->
-                    <div class="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700">
-                        <h3 class="text-2xl font-bold mb-6">Quick Actions</h3>
-                        <div class="space-y-4">
-                            <button class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-4 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center">
-                                <i class="fab fa-discord text-xl mr-3"></i>Join Our Discord
-                            </button>
-                            <button class="w-full bg-gray-700 hover:bg-gray-600 text-white py-4 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center">
-                                <i class="fas fa-ticket-alt text-xl mr-3"></i>Open Support Ticket
-                            </button>
-                            <button class="w-full bg-green-600 hover:bg-green-700 text-white py-4 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center">
-                                <i class="fas fa-star text-xl mr-3"></i>Request Sponsorship
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- FAQ Quick Links -->
-                    <div class="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700">
-                        <h3 class="text-2xl font-bold mb-6">FAQ</h3>
-                        <div class="space-y-4 text-sm">
-                            <div>
-                                <div class="font-semibold text-primary-500 mb-1">What's included with sponsorship?</div>
-                                <div class="text-gray-300">Free custom assets, priority support, and promotional features.</div>
-                            </div>
-                            <div>
-                                <div class="font-semibold text-primary-500 mb-1">How long does delivery take?</div>
-                                <div class="text-gray-300">Most projects are completed within 24-48 hours.</div>
-                            </div>
-                            <div>
-                                <div class="font-semibold text-primary-500 mb-1">Do you offer revisions?</div>
-                                <div class="text-gray-300">Yes, we include free revisions until you're satisfied.</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-black border-t border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div class="col-span-2">
-                    <div class="flex items-center mb-4">
-                        <i class="fas fa-mountain text-2xl text-primary-500 glow-text mr-3"></i>
-                        <span class="text-xl font-bold">Swift Peak FiveM</span>
-                    </div>
-                    <p class="text-gray-400 mb-6 max-w-md">
-                        Professional FiveM development services. Custom vehicles, scripts, graphics, EUP, 
-                        and more. Making your server stand out since 2021.
-                    </p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary-500 transition-all duration-300">
-                            <i class="fab fa-discord"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary-500 transition-all duration-300">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary-500 transition-all duration-300">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary-500 transition-all duration-300">
-                            <i class="fas fa-youtube"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div>
-                    <h3 class="font-bold text-white mb-4">Services</h3>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="#services" class="hover:text-primary-500 transition-colors">Vehicle Tunes</a></li>
-                        <li><a href="#services" class="hover:text-primary-500 transition-colors">Custom Scripts</a></li>
-                        <li><a href="#services" class="hover:text-primary-500 transition-colors">Graphics & GFX</a></li>
-                        <li><a href="#services" class="hover:text-primary-500 transition-colors">EUP & Clothing</a></li>
-                        <li><a href="#services" class="hover:text-primary-500 transition-colors">Weapons & Props</a></li>
-                        <li><a href="#services" class="hover:text-primary-500 transition-colors">MLO & Mapping</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h3 class="font-bold text-white mb-4">Support</h3>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="#" class="hover:text-primary-500 transition-colors">Discord Support</a></li>
-                        <li><a href="#" class="hover:text-primary-500 transition-colors">Installation Guides</a></li>
-                        <li><a href="#" class="hover:text-primary-500 transition-colors">Sponsorship Info</a></li>
-                        <li><a href="#" class="hover:text-primary-500 transition-colors">Terms of Service</a></li>
-                        <li><a href="#" class="hover:text-primary-500 transition-colors">Privacy Policy</a></li>
-                        <li><a href="#" class="hover:text-primary-500 transition-colors">Refund Policy</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <div class="text-gray-400 mb-4 md:mb-0">
-                    © 2024 Swift Peak FiveM Services. All rights reserved.
-                </div>
-                <div class="flex items-center space-x-4 text-sm text-gray-400">
-                    <span class="flex items-center">
-                        <i class="fas fa-shield-alt text-primary-500 mr-2"></i>
-                        Secure Payments
-                    </span>
-                    <span class="flex items-center">
-                        <i class="fas fa-clock text-accent-500 mr-2"></i>
-                        24-48h Delivery
-                    </span>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Scripts -->
-    <script>
-        // Mobile Menu Functions
-        function toggleMobileMenu() {
-            const mobileMenu = document.getElementById('mobile-menu');
-            const menuIcon = document.getElementById('mobile-menu-icon');
-            
-            if (mobileMenu.classList.contains('translate-x-full')) {
-                mobileMenu.classList.remove('translate-x-full');
-                mobileMenu.classList.add('translate-x-0');
-                menuIcon.classList.remove('fa-bars');
-                menuIcon.classList.add('fa-times');
-            } else {
-                closeMobileMenu();
-            }
-        }
-
-        function closeMobileMenu() {
-            const mobileMenu = document.getElementById('mobile-menu');
-            const menuIcon = document.getElementById('mobile-menu-icon');
-            
-            mobileMenu.classList.add('translate-x-full');
-            mobileMenu.classList.remove('translate-x-0');
-            menuIcon.classList.add('fa-bars');
-            menuIcon.classList.remove('fa-times');
-        }
-
-        // Loading Screen
-        window.addEventListener('load', function() {
-            setTimeout(() => {
-                document.getElementById('loading-screen').style.opacity = '0';
-                setTimeout(() => {
-                    document.getElementById('loading-screen').style.display = 'none';
-                }, 500);
-            }, 1500);
-        });
-
-        // Smooth Scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Mobile Menu Button Event
-        document.getElementById('mobile-menu-button').addEventListener('click', toggleMobileMenu);
-
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observe service cards
-        document.querySelectorAll('.service-card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(50px)';
-            card.style.transition = 'all 0.6s ease';
-            observer.observe(card);
-        });
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 100) {
-                nav.classList.add('bg-black');
-                nav.classList.remove('bg-black/90');
-            } else {
-                nav.classList.remove('bg-black');
-                nav.classList.add('bg-black/90');
-            }
-        });
-
-        // Form handling
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(e.target);
-            
-            // Show success message
-            const button = e.target.querySelector('button[type="submit"]');
-            const originalText = button.innerHTML;
-            
-            button.innerHTML = '<i class="fas fa-check mr-2"></i>Message Sent!';
-            button.classList.add('bg-green-600');
-            
-            setTimeout(() => {
-                button.innerHTML = originalText;
-                button.classList.remove('bg-green-600');
-                e.target.reset();
-            }, 3000);
-        });
-
-        // Add hover effects to service cards
-        document.querySelectorAll('.service-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-8px) scale(1.02)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
-            });
-        });
-
-        // Particle effect for hero section (simplified)
-        function createParticles() {
-            const heroSection = document.querySelector('#home');
-            const particleCount = 50;
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'absolute w-1 h-1 bg-primary-500 rounded-full opacity-20';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.top = Math.random() * 100 + '%';
-                particle.style.animation = `float ${Math.random() * 3 + 2}s ease-in-out infinite`;
-                particle.style.animationDelay = Math.random() * 2 + 's';
-                heroSection.appendChild(particle);
-            }
-        }
-
-        // Initialize particles
-        createParticles();
-
-        // Add typing effect to hero text (optional enhancement)
-        function typeWriter(element, text, speed = 100) {
-            let i = 0;
-            element.innerHTML = '';
-            
-            function type() {
-                if (i < text.length) {
-                    element.innerHTML += text.charAt(i);
-                    i++;
-                    setTimeout(type, speed);
-                }
-            }
-            type();
-        }
-
-        // Initialize typing effect after loading
-        setTimeout(() => {
-            const heroTitle = document.querySelector('#home h1');
-            if (heroTitle) {
-                const originalText = heroTitle.textContent;
-                typeWriter(heroTitle, originalText, 50);
-            }
-        }, 2000);
-    </script>
-</body>
-</html>
+                        <h3 class="text-2xl font-
