@@ -6,7 +6,7 @@
     <title>CivSync Hosting - Premium FiveM Services</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Creepster&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -21,64 +21,88 @@
         }
         
         .gradient-bg {
-            background: linear-gradient(180deg, #0a0a0a 0%, #1a1a2e 50%, #0a0a0a 100%);
+            background: linear-gradient(180deg, #0a0a0a 0%, #1a0a2e 50%, #0a0a0a 100%);
         }
         
         .hero-gradient {
-            background: radial-gradient(circle at 50% 0%, rgba(88, 28, 135, 0.15), transparent 70%),
-                        radial-gradient(circle at 0% 50%, rgba(234, 88, 12, 0.1), transparent 50%),
+            background: radial-gradient(circle at 50% 0%, rgba(255, 107, 26, 0.15), transparent 70%),
+                        radial-gradient(circle at 0% 50%, rgba(139, 92, 246, 0.1), transparent 50%),
                         #0a0a0a;
         }
         
         .card {
-            background: rgba(26, 26, 46, 0.5);
+            background: rgba(26, 10, 46, 0.6);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 107, 26, 0.3);
             transition: all 0.3s ease;
         }
         
         .card:hover {
             transform: translateY(-8px);
-            border-color: rgba(168, 85, 247, 0.5);
-            box-shadow: 0 20px 40px rgba(168, 85, 247, 0.2);
+            border-color: rgba(255, 107, 26, 0.6);
+            box-shadow: 0 20px 40px rgba(255, 107, 26, 0.3),
+                        0 0 60px rgba(139, 92, 246, 0.2);
         }
         
         .btn-primary {
-            background: linear-gradient(135deg, #a855f7, #ec4899);
+            background: linear-gradient(135deg, #FF6B1A, #8B5CF6);
             transition: all 0.3s ease;
         }
         
         .btn-primary:hover {
             transform: scale(1.05);
-            box-shadow: 0 10px 30px rgba(168, 85, 247, 0.4);
+            box-shadow: 0 10px 30px rgba(255, 107, 26, 0.5);
         }
         
         .section-title {
-            background: linear-gradient(135deg, #a855f7, #ec4899);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-family: 'Creepster', cursive;
+            color: #FF6B1A;
+            text-shadow: 0 0 20px rgba(255, 107, 26, 0.5);
+            animation: glow 3s ease-in-out infinite;
+        }
+        
+        @keyframes glow {
+            0%, 100% { text-shadow: 0 0 20px rgba(255, 107, 26, 0.5); }
+            50% { text-shadow: 0 0 30px rgba(255, 107, 26, 0.8), 0 0 40px rgba(139, 92, 246, 0.4); }
+        }
+        
+        .pumpkin-float {
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(-5deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        
+        .ghost-float {
+            animation: ghost-move 6s ease-in-out infinite;
+            opacity: 0.4;
+        }
+        
+        @keyframes ghost-move {
+            0%, 100% { transform: translate(0, 0); }
+            33% { transform: translate(30px, -30px); }
+            66% { transform: translate(-30px, 30px); }
         }
     </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="fixed w-full top-0 z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
+    <nav class="fixed w-full top-0 z-50 bg-black/80 backdrop-blur-md border-b border-orange-500/20">
         <div class="max-w-7xl mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-3">
-                    <div class="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
-                        <i class="fas fa-server text-white"></i>
-                    </div>
-                    <span class="text-2xl font-bold">CivSync</span>
+                    <div class="text-3xl pumpkin-float">🎃</div>
+                    <span class="text-2xl font-bold section-title" style="font-family: 'Creepster', cursive;">CivSync</span>
                 </div>
                 
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#home" class="hover:text-purple-400 transition">Home</a>
-                    <a href="#hosting" class="hover:text-purple-400 transition">Hosting</a>
-                    <a href="#prebuilt" class="hover:text-purple-400 transition">Pre-Built</a>
-                    <a href="#assets" class="hover:text-purple-400 transition">Assets</a>
-                    <a href="#about" class="hover:text-purple-400 transition">About</a>
+                    <a href="#home" class="hover:text-orange-400 transition">Home</a>
+                    <a href="#hosting" class="hover:text-orange-400 transition">Hosting</a>
+                    <a href="#prebuilt" class="hover:text-orange-400 transition">Pre-Built</a>
+                    <a href="#assets" class="hover:text-orange-400 transition">Assets</a>
+                    <a href="#about" class="hover:text-orange-400 transition">About</a>
                     <a href="https://discord.gg/VdMcJRpmzZ" class="btn-primary px-6 py-2 rounded-full text-white font-semibold">
                         <i class="fab fa-discord mr-2"></i>Discord
                     </a>
@@ -88,13 +112,20 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero-gradient min-h-screen flex items-center pt-20">
-        <div class="max-w-7xl mx-auto px-6 text-center">
+    <section id="home" class="hero-gradient min-h-screen flex items-center pt-20 relative overflow-hidden">
+        <!-- Floating Halloween Elements -->
+        <div class="absolute top-20 right-20 text-6xl ghost-float">👻</div>
+        <div class="absolute bottom-40 left-20 text-5xl pumpkin-float">🎃</div>
+        <div class="absolute top-1/3 right-1/3 text-4xl ghost-float" style="animation-delay: -2s;">🦇</div>
+        <div class="absolute bottom-1/3 left-1/4 text-3xl pumpkin-float" style="animation-delay: -1s;">🕷️</div>
+        
+        <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
+            <div class="text-7xl mb-6">🎃👻🦇</div>
             <h1 class="text-6xl md:text-8xl font-black mb-6">
                 <span class="section-title">CivSync Hosting</span>
             </h1>
-            <p class="text-2xl text-gray-400 mb-12 max-w-3xl mx-auto">
-                Premium FiveM Services, Hosting & Custom Development
+            <p class="text-2xl text-gray-300 mb-12 max-w-3xl mx-auto">
+                Spooktacular FiveM Services, Hosting & Custom Development
             </p>
             <div class="flex flex-wrap justify-center gap-6 mb-16">
                 <a href="#hosting" class="btn-primary px-8 py-4 rounded-full font-bold text-lg">
@@ -108,19 +139,19 @@
             <!-- Stats -->
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
                 <div class="card rounded-2xl p-6">
-                    <div class="text-4xl font-black text-purple-500 mb-2">500+</div>
+                    <div class="text-4xl font-black text-orange-500 mb-2">500+</div>
                     <div class="text-gray-400">Assets</div>
                 </div>
                 <div class="card rounded-2xl p-6">
-                    <div class="text-4xl font-black text-pink-500 mb-2">200+</div>
+                    <div class="text-4xl font-black text-purple-500 mb-2">200+</div>
                     <div class="text-gray-400">Clients</div>
                 </div>
                 <div class="card rounded-2xl p-6">
-                    <div class="text-4xl font-black text-purple-400 mb-2">99.9%</div>
+                    <div class="text-4xl font-black text-orange-400 mb-2">99.9%</div>
                     <div class="text-gray-400">Uptime</div>
                 </div>
                 <div class="card rounded-2xl p-6">
-                    <div class="text-4xl font-black text-pink-400 mb-2">24/7</div>
+                    <div class="text-4xl font-black text-purple-400 mb-2">24/7</div>
                     <div class="text-gray-400">Support</div>
                 </div>
             </div>
@@ -131,37 +162,40 @@
     <section id="hosting" class="py-24 gradient-bg">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
+                <div class="text-6xl mb-4">🏰</div>
                 <h2 class="text-5xl font-black mb-4 section-title">Hosting Plans</h2>
-                <p class="text-xl text-gray-400">Choose the perfect plan for your server</p>
+                <p class="text-xl text-gray-400">Choose your haunted server home</p>
             </div>
             
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Basic -->
                 <div class="card rounded-3xl p-8">
-                    <h3 class="text-3xl font-bold mb-4 text-purple-400">Basic</h3>
+                    <div class="text-5xl mb-4">🕸️</div>
+                    <h3 class="text-3xl font-bold mb-4 text-orange-400">Basic</h3>
                     <ul class="space-y-4 mb-8 text-gray-300">
-                        <li><i class="fas fa-check text-purple-500 mr-2"></i>1 Core CPU</li>
-                        <li><i class="fas fa-check text-purple-500 mr-2"></i>2 GB RAM</li>
-                        <li><i class="fas fa-check text-purple-500 mr-2"></i>128 GB SSD</li>
-                        <li><i class="fas fa-check text-purple-500 mr-2"></i>10 TB Bandwidth</li>
+                        <li><i class="fas fa-check text-orange-500 mr-2"></i>1 Core CPU</li>
+                        <li><i class="fas fa-check text-orange-500 mr-2"></i>2 GB RAM</li>
+                        <li><i class="fas fa-check text-orange-500 mr-2"></i>128 GB SSD</li>
+                        <li><i class="fas fa-check text-orange-500 mr-2"></i>10 TB Bandwidth</li>
                     </ul>
-                    <button onclick="window.location.href='https://whop.com/checkout/plan_36Blw17FSenhh?d2c=true'" class="w-full bg-purple-600 hover:bg-purple-700 py-4 rounded-xl font-bold transition">
+                    <button onclick="window.location.href='https://whop.com/checkout/plan_36Blw17FSenhh?d2c=true'" class="w-full bg-orange-600 hover:bg-orange-700 py-4 rounded-xl font-bold transition">
                         Purchase
                     </button>
                 </div>
 
                 <!-- Standard -->
-                <div class="card rounded-3xl p-8 border-2 border-purple-500 relative">
-                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-purple-600 to-pink-600 px-6 py-2 rounded-full text-sm font-bold">
-                        POPULAR
+                <div class="card rounded-3xl p-8 border-2 border-orange-500 relative transform scale-105">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-orange-600 to-purple-600 px-6 py-2 rounded-full text-sm font-bold">
+                        👻 POPULAR
                     </div>
-                    <h3 class="text-3xl font-bold mb-4 text-pink-400">Standard</h3>
+                    <div class="text-5xl mb-4">🎃</div>
+                    <h3 class="text-3xl font-bold mb-4 text-purple-400">Standard</h3>
                     <div class="text-4xl font-black mb-4">$10-15<span class="text-lg text-gray-400">/mo</span></div>
                     <ul class="space-y-4 mb-8 text-gray-300">
-                        <li><i class="fas fa-check text-pink-500 mr-2"></i>2 Core CPU</li>
-                        <li><i class="fas fa-check text-pink-500 mr-2"></i>4 GB RAM</li>
-                        <li><i class="fas fa-check text-pink-500 mr-2"></i>256 GB SSD</li>
-                        <li><i class="fas fa-check text-pink-500 mr-2"></i>30 TB Bandwidth</li>
+                        <li><i class="fas fa-check text-purple-500 mr-2"></i>2 Core CPU</li>
+                        <li><i class="fas fa-check text-purple-500 mr-2"></i>4 GB RAM</li>
+                        <li><i class="fas fa-check text-purple-500 mr-2"></i>256 GB SSD</li>
+                        <li><i class="fas fa-check text-purple-500 mr-2"></i>30 TB Bandwidth</li>
                     </ul>
                     <button onclick="window.location.href='https://whop.com/checkout/plan_p85jthy8i3PKB?d2c=true'" class="w-full btn-primary py-4 rounded-xl font-bold">
                         Purchase
@@ -170,14 +204,15 @@
 
                 <!-- Premium -->
                 <div class="card rounded-3xl p-8">
-                    <h3 class="text-3xl font-bold mb-4 text-purple-400">Premium</h3>
+                    <div class="text-5xl mb-4">👑</div>
+                    <h3 class="text-3xl font-bold mb-4 text-orange-400">Premium</h3>
                     <ul class="space-y-4 mb-8 text-gray-300">
-                        <li><i class="fas fa-check text-purple-500 mr-2"></i>4 Core CPU</li>
-                        <li><i class="fas fa-check text-purple-500 mr-2"></i>8 GB RAM</li>
-                        <li><i class="fas fa-check text-purple-500 mr-2"></i>512 GB SSD</li>
-                        <li><i class="fas fa-check text-purple-500 mr-2"></i>100 TB Bandwidth</li>
+                        <li><i class="fas fa-check text-orange-500 mr-2"></i>4 Core CPU</li>
+                        <li><i class="fas fa-check text-orange-500 mr-2"></i>8 GB RAM</li>
+                        <li><i class="fas fa-check text-orange-500 mr-2"></i>512 GB SSD</li>
+                        <li><i class="fas fa-check text-orange-500 mr-2"></i>100 TB Bandwidth</li>
                     </ul>
-                    <button onclick="window.location.href='https://whop.com/checkout/plan_THadtVV8huNzm?d2c=true'" class="w-full bg-purple-600 hover:bg-purple-700 py-4 rounded-xl font-bold transition">
+                    <button onclick="window.location.href='https://whop.com/checkout/plan_THadtVV8huNzm?d2c=true'" class="w-full bg-orange-600 hover:bg-orange-700 py-4 rounded-xl font-bold transition">
                         Purchase
                     </button>
                 </div>
@@ -189,12 +224,14 @@
     <section id="prebuilt" class="py-24">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
+                <div class="text-6xl mb-4">🏗️</div>
                 <h2 class="text-5xl font-black mb-4 section-title">Pre-Built FiveM Servers</h2>
-                <p class="text-xl text-gray-400">Ready to deploy in minutes</p>
+                <p class="text-xl text-gray-400">Bewitched & ready to deploy</p>
             </div>
             
             <div class="max-w-4xl mx-auto card rounded-3xl p-12">
-                <h3 class="text-3xl font-bold mb-6 text-purple-400">Complete Server Package</h3>
+                <div class="text-7xl mb-6">🚀</div>
+                <h3 class="text-3xl font-bold mb-6 text-orange-400">Complete Server Package</h3>
                 <p class="text-lg text-gray-300 mb-8">
                     Perfect for plug-and-play deployment. Fully configured with scripts, vehicle packs, 
                     professional GFX, and optimized performance settings.
@@ -234,8 +271,9 @@
     <section id="assets" class="py-24 gradient-bg">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
+                <div class="text-6xl mb-4">🎨</div>
                 <h2 class="text-5xl font-black mb-4 section-title">Custom Assets</h2>
-                <p class="text-xl text-gray-400">Professional customization services</p>
+                <p class="text-xl text-gray-400">Enchanted customization services</p>
             </div>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
