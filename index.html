@@ -1,531 +1,184 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CivSync Hosting - Premium FiveM Services</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        halloween: {
-                            orange: '#FF6B1A',
-                            purple: '#8B5CF6',
-                            green: '#10B981',
-                            dark: '#1a0a2e'
-                        }
-                    },
-                    fontFamily: {
-                        'creepster': ['Creepster', 'cursive'],
-                        'poppins': ['Poppins', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
-            font-family: 'Poppins', sans-serif;
-            background: #0a0014;
-            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
         }
         
-        .halloween-gradient {
-            background: linear-gradient(135deg, #1a0a2e 0%, #2d1b4e 50%, #1a0a2e 100%);
+        .gradient-bg {
+            background: linear-gradient(180deg, #0a0a0a 0%, #1a1a2e 50%, #0a0a0a 100%);
         }
         
-        .hero-halloween {
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(255, 107, 26, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 30%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
-                linear-gradient(135deg, #0a0014 0%, #1a0a2e 80%);
-            position: relative;
+        .hero-gradient {
+            background: radial-gradient(circle at 50% 0%, rgba(88, 28, 135, 0.15), transparent 70%),
+                        radial-gradient(circle at 0% 50%, rgba(234, 88, 12, 0.1), transparent 50%),
+                        #0a0a0a;
         }
         
-        .spooky-glow {
-            animation: spooky-pulse 3s ease-in-out infinite;
-        }
-        
-        @keyframes spooky-pulse {
-            0%, 100% { 
-                text-shadow: 0 0 20px rgba(255, 107, 26, 0.8),
-                             0 0 40px rgba(139, 92, 246, 0.6);
-            }
-            50% { 
-                text-shadow: 0 0 30px rgba(255, 107, 26, 1),
-                             0 0 60px rgba(139, 92, 246, 0.8);
-            }
-        }
-        
-        .card-halloween {
-            background: rgba(26, 10, 46, 0.7);
-            backdrop-filter: blur(20px);
-            border: 2px solid rgba(255, 107, 26, 0.3);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .card-halloween::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 107, 26, 0.1) 0%, transparent 70%);
-            animation: rotate-glow 8s linear infinite;
-        }
-        
-        @keyframes rotate-glow {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        .card-halloween:hover {
-            transform: translateY(-10px) scale(1.02);
-            border-color: rgba(255, 107, 26, 0.8);
-            box-shadow: 0 20px 60px rgba(255, 107, 26, 0.4),
-                        0 0 80px rgba(139, 92, 246, 0.3);
-        }
-        
-        .btn-halloween {
-            background: linear-gradient(135deg, #FF6B1A, #8B5CF6);
-            border: none;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(255, 107, 26, 0.5);
+        .card {
+            background: rgba(26, 26, 46, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
         }
         
-        .btn-halloween:hover {
-            transform: scale(1.05) translateY(-2px);
-            box-shadow: 0 8px 30px rgba(255, 107, 26, 0.7),
-                        0 0 40px rgba(139, 92, 246, 0.5);
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(168, 85, 247, 0.5);
+            box-shadow: 0 20px 40px rgba(168, 85, 247, 0.2);
         }
         
-        .pumpkin-float {
-            animation: pumpkin-bounce 4s ease-in-out infinite;
+        .btn-primary {
+            background: linear-gradient(135deg, #a855f7, #ec4899);
+            transition: all 0.3s ease;
         }
         
-        @keyframes pumpkin-bounce {
-            0%, 100% { transform: translateY(0) rotate(-5deg); }
-            50% { transform: translateY(-30px) rotate(5deg); }
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(168, 85, 247, 0.4);
         }
         
-        .ghost-float {
-            animation: ghost-sway 5s ease-in-out infinite;
-            opacity: 0.6;
-        }
-        
-        @keyframes ghost-sway {
-            0%, 100% { transform: translate(0, 0); }
-            25% { transform: translate(20px, -20px); }
-            75% { transform: translate(-20px, 20px); }
-        }
-        
-        .spider-web {
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            background: 
-                linear-gradient(90deg, transparent 48%, rgba(139, 92, 246, 0.3) 49%, rgba(139, 92, 246, 0.3) 51%, transparent 52%),
-                linear-gradient(0deg, transparent 48%, rgba(139, 92, 246, 0.3) 49%, rgba(139, 92, 246, 0.3) 51%, transparent 52%);
-            opacity: 0.3;
-        }
-        
-        .loading-spinner-halloween {
-            border: 4px solid rgba(255, 107, 26, 0.3);
-            border-top: 4px solid #FF6B1A;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        .nav-link-halloween::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #FF6B1A, #8B5CF6);
-            transition: width 0.3s ease;
-        }
-        
-        .nav-link-halloween:hover::after {
-            width: 100%;
-        }
-        
-        .fog-effect {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 200px;
-            background: linear-gradient(to top, rgba(139, 92, 246, 0.1), transparent);
-            pointer-events: none;
-            z-index: 1;
+        .section-title {
+            background: linear-gradient(135deg, #a855f7, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
     </style>
 </head>
-<body class="bg-black text-white">
-    <!-- Fog Effect -->
-    <div class="fog-effect"></div>
-    
-    <!-- Loading Screen -->
-    <div id="loading-screen" class="fixed inset-0 bg-black z-50 flex items-center justify-center transition-opacity duration-500">
-        <div class="text-center">
-            <div class="text-8xl mb-6 pumpkin-float">🎃</div>
-            <div class="loading-spinner-halloween mx-auto mb-6"></div>
-            <div class="text-4xl font-creepster spooky-glow text-halloween-orange">CivSync Hosting</div>
-            <div class="text-gray-400 mt-2">Spooky Premium FiveM Services</div>
-        </div>
-    </div>
-
-    <!-- Main Content Wrapper -->
-    <div class="relative">
-    
+<body>
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full bg-black/90 backdrop-blur-md z-40 border-b border-halloween-orange/20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <div class="flex items-center">
-                    <div class="text-4xl mr-3">🎃</div>
-                    <span class="text-2xl font-creepster text-halloween-orange spooky-glow">CivSync</span>
-                </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-black border-t border-halloween-orange/20 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-                <div class="col-span-2">
-                    <div class="flex items-center mb-6">
-                        <div class="text-4xl mr-3">🎃</div>
-                        <span class="text-2xl font-creepster text-halloween-orange spooky-glow">CivSync Hosting</span>
+    <nav class="fixed w-full top-0 z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-server text-white"></i>
                     </div>
-                    <p class="text-gray-400 mb-8 leading-relaxed">
-                        Professional FiveM development services and hosting solutions. Making your server stand out 
-                        with quality, reliability, and expert support.
-                    </p>
-                    <div class="flex space-x-4">
-                        <a href="https://discord.gg/VdMcJRpmzZ" class="w-12 h-12 bg-gray-800/50 rounded-xl flex items-center justify-center hover:bg-halloween-orange transition-all duration-300 border border-gray-700/50">
-                            <i class="fab fa-discord"></i>
-                        </a>
-                        <a href="#" class="w-12 h-12 bg-gray-800/50 rounded-xl flex items-center justify-center hover:bg-halloween-purple transition-all duration-300 border border-gray-700/50">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                    </div>
+                    <span class="text-2xl font-bold">CivSync</span>
                 </div>
                 
-                <div>
-                    <h3 class="font-bold text-white mb-6 text-xl">Services</h3>
-                    <ul class="space-y-3 text-gray-400">
-                        <li><a href="#hosting" class="hover:text-halloween-orange transition-colors">Server Hosting</a></li>
-                        <li><a href="#prebuilt" class="hover:text-halloween-orange transition-colors">Pre-Built Servers</a></li>
-                        <li><a href="#assets" class="hover:text-halloween-orange transition-colors">Vehicle Tunes</a></li>
-                        <li><a href="#assets" class="hover:text-halloween-orange transition-colors">Weapon Tunes</a></li>
-                        <li><a href="#assets" class="hover:text-halloween-orange transition-colors">Custom Scripts</a></li>
-                        <li><a href="#assets" class="hover:text-halloween-orange transition-colors">GFX Design</a></li>
-                        <li><a href="#assets" class="hover:text-halloween-orange transition-colors">EUP & Clothing</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h3 class="font-bold text-white mb-6 text-xl">Support</h3>
-                    <ul class="space-y-3 text-gray-400">
-                        <li><a href="https://discord.gg/VdMcJRpmzZ" class="hover:text-halloween-purple transition-colors">Discord Support</a></li>
-                        <li><a href="#about" class="hover:text-halloween-purple transition-colors">About Us</a></li>
-                        <li><a href="#contact" class="hover:text-halloween-purple transition-colors">Contact</a></li>
-                        <li><a href="https://discord.gg/VdMcJRpmzZ" class="hover:text-halloween-purple transition-colors">Sponsorship Info</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="border-t border-gray-800/50 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <div class="text-gray-400 mb-4 md:mb-0">
-                    © 2024 CivSync Hosting. All rights reserved.
-                </div>
-                <div class="flex items-center space-x-6 text-sm text-gray-400">
-                    <span class="flex items-center">
-                        <i class="fas fa-shield-alt text-halloween-orange mr-2"></i>
-                        Secure Payments
-                    </span>
-                    <span class="flex items-center">
-                        <i class="fas fa-clock text-halloween-purple mr-2"></i>
-                        24/7 Support
-                    </span>
-                </div>
-            </div>
-        </div>
-    </footer>
-    
-    </div>
-    <!-- End Main Content Wrapper -->
-
-    <!-- Scripts -->
-    <script>
-        // Loading Screen - Execute immediately
-        (function() {
-            const loadingScreen = document.getElementById('loading-screen');
-            
-            // Hide loading screen after page loads
-            window.addEventListener('load', function() {
-                setTimeout(() => {
-                    loadingScreen.style.opacity = '0';
-                    setTimeout(() => {
-                        loadingScreen.style.display = 'none';
-                    }, 500);
-                }, 800);
-            });
-            
-            // Fallback - hide after 3 seconds regardless
-            setTimeout(() => {
-                if (loadingScreen && loadingScreen.style.display !== 'none') {
-                    loadingScreen.style.opacity = '0';
-                    setTimeout(() => {
-                        loadingScreen.style.display = 'none';
-                    }, 500);
-                }
-            }, 3000);
-        })();
-
-        // Mobile Menu
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        let mobileMenuOpen = false;
-
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenuOpen = !mobileMenuOpen;
-            // Add mobile menu functionality here if needed
-        });
-
-        // Smooth Scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Form Handling
-        function handleFormSubmit(e) {
-            e.preventDefault();
-            const button = e.target.querySelector('button[type="submit"]');
-            const originalText = button.innerHTML;
-            
-            button.innerHTML = '<i class="fas fa-check mr-2"></i>Message Sent!';
-            button.style.background = 'linear-gradient(135deg, #10b981, #059669)';
-            
-            setTimeout(() => {
-                button.innerHTML = originalText;
-                button.style.background = '';
-                e.target.reset();
-            }, 3000);
-        }
-
-        // Navbar Scroll Effect
-        window.addEventListener('scroll', function() {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 100) {
-                nav.classList.add('shadow-2xl');
-            } else {
-                nav.classList.remove('shadow-2xl');
-            }
-        });
-
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observe cards
-        document.querySelectorAll('.card-halloween').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(50px)';
-            card.style.transition = 'all 0.6s ease';
-            observer.observe(card);
-        });
-
-        // Floating Halloween Elements
-        function createFloatingElements() {
-            const elements = ['🦇', '👻', '🕷️', '🕸️'];
-            const container = document.querySelector('#home');
-            
-            for (let i = 0; i < 15; i++) {
-                const element = document.createElement('div');
-                element.className = 'absolute text-4xl ghost-float pointer-events-none';
-                element.textContent = elements[Math.floor(Math.random() * elements.length)];
-                element.style.left = Math.random() * 100 + '%';
-                element.style.top = Math.random() * 100 + '%';
-                element.style.animationDelay = Math.random() * 5 + 's';
-                element.style.opacity = Math.random() * 0.3 + 0.2;
-                container.appendChild(element);
-            }
-        }
-
-        createFloatingElements();
-    </script>
-</body>
-</html>
-
-                <div class="hidden lg:flex items-center space-x-2">
-                    <a href="#home" class="nav-link-halloween relative text-white px-4 py-2 rounded-lg hover:bg-halloween-purple/20">Home</a>
-                    <a href="#hosting" class="nav-link-halloween relative text-white px-4 py-2 rounded-lg hover:bg-halloween-purple/20">Hosting</a>
-                    <a href="#prebuilt" class="nav-link-halloween relative text-white px-4 py-2 rounded-lg hover:bg-halloween-purple/20">Pre-Built Servers</a>
-                    <a href="#assets" class="nav-link-halloween relative text-white px-4 py-2 rounded-lg hover:bg-halloween-purple/20">Custom Assets</a>
-                    <a href="#about" class="nav-link-halloween relative text-white px-4 py-2 rounded-lg hover:bg-halloween-purple/20">About</a>
-                    <a href="https://discord.gg/VdMcJRpmzZ" class="nav-link-halloween relative text-white px-4 py-2 rounded-lg hover:bg-halloween-purple/20">
-                        <i class="fab fa-discord mr-1"></i>Discord
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="hover:text-purple-400 transition">Home</a>
+                    <a href="#hosting" class="hover:text-purple-400 transition">Hosting</a>
+                    <a href="#prebuilt" class="hover:text-purple-400 transition">Pre-Built</a>
+                    <a href="#assets" class="hover:text-purple-400 transition">Assets</a>
+                    <a href="#about" class="hover:text-purple-400 transition">About</a>
+                    <a href="https://discord.gg/VdMcJRpmzZ" class="btn-primary px-6 py-2 rounded-full text-white font-semibold">
+                        <i class="fab fa-discord mr-2"></i>Discord
                     </a>
-                    <button class="btn-halloween px-6 py-2.5 rounded-full text-white font-semibold ml-2">
-                        Get Started
-                    </button>
-                </div>
-
-                <div class="lg:hidden">
-                    <button id="mobile-menu-button" class="text-halloween-orange p-2">
-                        <i class="fas fa-bars text-xl"></i>
-                    </button>
                 </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero-halloween min-h-screen flex items-center relative overflow-hidden pt-20">
-        <div class="spider-web top-10 right-10 hidden lg:block"></div>
-        <div class="spider-web bottom-20 left-10 hidden lg:block"></div>
-        
-        <div class="absolute top-20 right-20 text-6xl ghost-float hidden lg:block">👻</div>
-        <div class="absolute bottom-40 left-20 text-5xl pumpkin-float hidden lg:block">🎃</div>
-        <div class="absolute top-1/3 right-1/3 text-4xl ghost-float hidden lg:block" style="animation-delay: -2s;">🦇</div>
-        
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center max-w-4xl mx-auto">
-                <div class="text-7xl mb-6">🎃👻🦇</div>
-                <h1 class="text-7xl md:text-9xl font-creepster mb-8 spooky-glow text-halloween-orange">
-                    CivSync Hosting
-                </h1>
-                <p class="text-2xl md:text-3xl text-purple-200 mb-10 leading-relaxed">
-                    Frighteningly Good FiveM Services & Hosting Solutions
-                </p>
-                <div class="flex flex-col sm:flex-row gap-6 justify-center mb-16">
-                    <button class="btn-halloween px-10 py-5 rounded-full text-white font-bold text-lg" onclick="document.getElementById('hosting').scrollIntoView({behavior: 'smooth'})">
-                        <i class="fas fa-fire mr-3"></i>View Plans
-                    </button>
-                    <button class="border-2 border-halloween-orange hover:bg-halloween-orange/20 px-10 py-5 rounded-full font-bold text-lg transition-all" onclick="window.location.href='https://discord.gg/VdMcJRpmzZ'">
-                        <i class="fab fa-discord mr-3"></i>Join Discord
-                    </button>
+    <section id="home" class="hero-gradient min-h-screen flex items-center pt-20">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h1 class="text-6xl md:text-8xl font-black mb-6">
+                <span class="section-title">CivSync Hosting</span>
+            </h1>
+            <p class="text-2xl text-gray-400 mb-12 max-w-3xl mx-auto">
+                Premium FiveM Services, Hosting & Custom Development
+            </p>
+            <div class="flex flex-wrap justify-center gap-6 mb-16">
+                <a href="#hosting" class="btn-primary px-8 py-4 rounded-full font-bold text-lg">
+                    View Plans
+                </a>
+                <a href="https://discord.gg/VdMcJRpmzZ" class="border-2 border-purple-500 px-8 py-4 rounded-full font-bold text-lg hover:bg-purple-500/20 transition">
+                    Join Discord
+                </a>
+            </div>
+            
+            <!-- Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+                <div class="card rounded-2xl p-6">
+                    <div class="text-4xl font-black text-purple-500 mb-2">500+</div>
+                    <div class="text-gray-400">Assets</div>
                 </div>
-                
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                    <div class="card-halloween rounded-2xl p-6">
-                        <div class="text-4xl font-black text-halloween-orange mb-2">500+</div>
-                        <div class="text-gray-400">Assets Created</div>
-                    </div>
-                    <div class="card-halloween rounded-2xl p-6">
-                        <div class="text-4xl font-black text-halloween-purple mb-2">200+</div>
-                        <div class="text-gray-400">Happy Clients</div>
-                    </div>
-                    <div class="card-halloween rounded-2xl p-6">
-                        <div class="text-4xl font-black text-halloween-green mb-2">99.9%</div>
-                        <div class="text-gray-400">Uptime</div>
-                    </div>
-                    <div class="card-halloween rounded-2xl p-6">
-                        <div class="text-4xl font-black text-halloween-orange mb-2">24/7</div>
-                        <div class="text-gray-400">Support</div>
-                    </div>
+                <div class="card rounded-2xl p-6">
+                    <div class="text-4xl font-black text-pink-500 mb-2">200+</div>
+                    <div class="text-gray-400">Clients</div>
+                </div>
+                <div class="card rounded-2xl p-6">
+                    <div class="text-4xl font-black text-purple-400 mb-2">99.9%</div>
+                    <div class="text-gray-400">Uptime</div>
+                </div>
+                <div class="card rounded-2xl p-6">
+                    <div class="text-4xl font-black text-pink-400 mb-2">24/7</div>
+                    <div class="text-gray-400">Support</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Hosting Plans -->
-    <section id="hosting" class="py-24 halloween-gradient relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-20">
-                <div class="text-6xl mb-4">🏰</div>
-                <h2 class="text-6xl font-creepster text-halloween-orange spooky-glow mb-6">Hosting Plans</h2>
-                <p class="text-xl text-gray-400">Choose Your Perfect Server</p>
+    <section id="hosting" class="py-24 gradient-bg">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-black mb-4 section-title">Hosting Plans</h2>
+                <p class="text-xl text-gray-400">Choose the perfect plan for your server</p>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                <!-- Basic Plan -->
-                <div class="card-halloween rounded-3xl p-10 relative z-10">
-                    <div class="text-5xl mb-4">🕸️</div>
-                    <h3 class="text-3xl font-bold text-halloween-orange mb-4">Basic</h3>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Basic -->
+                <div class="card rounded-3xl p-8">
+                    <h3 class="text-3xl font-bold mb-4 text-purple-400">Basic</h3>
                     <ul class="space-y-4 mb-8 text-gray-300">
-                        <li><i class="fas fa-microchip text-halloween-orange mr-2"></i><strong>CPU:</strong> 1 Core</li>
-                        <li><i class="fas fa-memory text-halloween-orange mr-2"></i><strong>Memory:</strong> 2 GB DDR3/4</li>
-                        <li><i class="fas fa-hdd text-halloween-orange mr-2"></i><strong>Storage:</strong> 128 GB SSD</li>
-                        <li><i class="fas fa-network-wired text-halloween-orange mr-2"></i><strong>Bandwidth:</strong> 10 TB</li>
+                        <li><i class="fas fa-check text-purple-500 mr-2"></i>1 Core CPU</li>
+                        <li><i class="fas fa-check text-purple-500 mr-2"></i>2 GB RAM</li>
+                        <li><i class="fas fa-check text-purple-500 mr-2"></i>128 GB SSD</li>
+                        <li><i class="fas fa-check text-purple-500 mr-2"></i>10 TB Bandwidth</li>
                     </ul>
-                    <button onclick="window.location.href='https://whop.com/checkout/plan_36Blw17FSenhh?d2c=true'" class="w-full btn-halloween py-4 rounded-xl font-bold text-lg">
-                        Purchase Item
+                    <button onclick="window.location.href='https://whop.com/checkout/plan_36Blw17FSenhh?d2c=true'" class="w-full bg-purple-600 hover:bg-purple-700 py-4 rounded-xl font-bold transition">
+                        Purchase
                     </button>
                 </div>
 
-                <!-- Standard Plan -->
-                <div class="card-halloween rounded-3xl p-10 border-halloween-purple relative z-10 transform scale-105">
-                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-halloween-purple px-6 py-2 rounded-full text-sm font-bold">
-                        MOST POPULAR
+                <!-- Standard -->
+                <div class="card rounded-3xl p-8 border-2 border-purple-500 relative">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-purple-600 to-pink-600 px-6 py-2 rounded-full text-sm font-bold">
+                        POPULAR
                     </div>
-                    <div class="text-5xl mb-4">🎃</div>
-                    <h3 class="text-3xl font-bold text-halloween-purple mb-4">Standard</h3>
-                    <div class="text-4xl font-black text-white mb-2">$10-15<span class="text-lg text-gray-400">/mo</span></div>
+                    <h3 class="text-3xl font-bold mb-4 text-pink-400">Standard</h3>
+                    <div class="text-4xl font-black mb-4">$10-15<span class="text-lg text-gray-400">/mo</span></div>
                     <ul class="space-y-4 mb-8 text-gray-300">
-                        <li><i class="fas fa-microchip text-halloween-purple mr-2"></i><strong>CPU:</strong> 2 Cores</li>
-                        <li><i class="fas fa-memory text-halloween-purple mr-2"></i><strong>Memory:</strong> 4 GB DDR3/4</li>
-                        <li><i class="fas fa-hdd text-halloween-purple mr-2"></i><strong>Storage:</strong> 256 GB SSD</li>
-                        <li><i class="fas fa-network-wired text-halloween-purple mr-2"></i><strong>Bandwidth:</strong> 30 TB</li>
+                        <li><i class="fas fa-check text-pink-500 mr-2"></i>2 Core CPU</li>
+                        <li><i class="fas fa-check text-pink-500 mr-2"></i>4 GB RAM</li>
+                        <li><i class="fas fa-check text-pink-500 mr-2"></i>256 GB SSD</li>
+                        <li><i class="fas fa-check text-pink-500 mr-2"></i>30 TB Bandwidth</li>
                     </ul>
-                    <button onclick="window.location.href='https://whop.com/checkout/plan_p85jthy8i3PKB?d2c=true'" class="w-full bg-gradient-to-r from-halloween-purple to-purple-700 hover:from-purple-700 hover:to-halloween-purple py-4 rounded-xl font-bold text-lg transition-all">
-                        Purchase Item
+                    <button onclick="window.location.href='https://whop.com/checkout/plan_p85jthy8i3PKB?d2c=true'" class="w-full btn-primary py-4 rounded-xl font-bold">
+                        Purchase
                     </button>
                 </div>
 
-                <!-- Premium Plan -->
-                <div class="card-halloween rounded-3xl p-10 relative z-10">
-                    <div class="text-5xl mb-4">👑</div>
-                    <h3 class="text-3xl font-bold text-halloween-green mb-4">Premium</h3>
+                <!-- Premium -->
+                <div class="card rounded-3xl p-8">
+                    <h3 class="text-3xl font-bold mb-4 text-purple-400">Premium</h3>
                     <ul class="space-y-4 mb-8 text-gray-300">
-                        <li><i class="fas fa-microchip text-halloween-green mr-2"></i><strong>CPU:</strong> 4 Cores</li>
-                        <li><i class="fas fa-memory text-halloween-green mr-2"></i><strong>Memory:</strong> 8 GB DDR3/4</li>
-                        <li><i class="fas fa-hdd text-halloween-green mr-2"></i><strong>Storage:</strong> 512 GB SSD</li>
-                        <li><i class="fas fa-network-wired text-halloween-green mr-2"></i><strong>Bandwidth:</strong> 100 TB</li>
+                        <li><i class="fas fa-check text-purple-500 mr-2"></i>4 Core CPU</li>
+                        <li><i class="fas fa-check text-purple-500 mr-2"></i>8 GB RAM</li>
+                        <li><i class="fas fa-check text-purple-500 mr-2"></i>512 GB SSD</li>
+                        <li><i class="fas fa-check text-purple-500 mr-2"></i>100 TB Bandwidth</li>
                     </ul>
-                    <button onclick="window.location.href='https://whop.com/checkout/plan_THadtVV8huNzm?d2c=true'" class="w-full bg-gradient-to-r from-halloween-green to-green-700 hover:from-green-700 hover:to-halloween-green py-4 rounded-xl font-bold text-lg transition-all">
-                        Purchase Item
+                    <button onclick="window.location.href='https://whop.com/checkout/plan_THadtVV8huNzm?d2c=true'" class="w-full bg-purple-600 hover:bg-purple-700 py-4 rounded-xl font-bold transition">
+                        Purchase
                     </button>
                 </div>
             </div>
@@ -533,198 +186,196 @@
     </section>
 
     <!-- Pre-Built Servers -->
-    <section id="prebuilt" class="py-24 bg-black/50 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-20">
-                <div class="text-6xl mb-4">🏗️</div>
-                <h2 class="text-6xl font-creepster text-halloween-orange spooky-glow mb-6">Pre-Built FiveM Servers</h2>
-                <p class="text-xl text-gray-400">Ready to Deploy in Minutes</p>
+    <section id="prebuilt" class="py-24">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-black mb-4 section-title">Pre-Built FiveM Servers</h2>
+                <p class="text-xl text-gray-400">Ready to deploy in minutes</p>
             </div>
-
-            <div class="max-w-4xl mx-auto">
-                <div class="card-halloween rounded-3xl p-12 relative z-10">
-                    <div class="text-center mb-8">
-                        <div class="text-7xl mb-6">🚀</div>
-                        <h3 class="text-4xl font-bold text-halloween-purple mb-4">Complete Server Package</h3>
-                        <p class="text-lg text-gray-300 leading-relaxed mb-8">
-                            Perfect for plug-and-play deployment. These servers come fully configured with selected scripts, 
-                            vehicle packs, professional GFX, and optimized performance settings. Ideal for server owners who 
-                            want to start immediately.
-                        </p>
+            
+            <div class="max-w-4xl mx-auto card rounded-3xl p-12">
+                <h3 class="text-3xl font-bold mb-6 text-purple-400">Complete Server Package</h3>
+                <p class="text-lg text-gray-300 mb-8">
+                    Perfect for plug-and-play deployment. Fully configured with scripts, vehicle packs, 
+                    professional GFX, and optimized performance settings.
+                </p>
+                
+                <div class="grid md:grid-cols-2 gap-6 mb-8">
+                    <div class="bg-black/30 rounded-xl p-6">
+                        <i class="fas fa-check-circle text-purple-500 text-2xl mb-3"></i>
+                        <h4 class="font-bold mb-2">Complete Setup</h4>
+                        <p class="text-gray-400 text-sm">Full installation & configuration</p>
                     </div>
-
-                    <div class="grid md:grid-cols-2 gap-6 mb-10">
-                        <div class="bg-black/30 rounded-xl p-6 border border-halloween-orange/20">
-                            <i class="fas fa-check-circle text-halloween-green text-2xl mb-3"></i>
-                            <h4 class="font-bold text-lg mb-2">Complete Installation & Configuration</h4>
-                        </div>
-                        <div class="bg-black/30 rounded-xl p-6 border border-halloween-purple/20">
-                            <i class="fas fa-check-circle text-halloween-green text-2xl mb-3"></i>
-                            <h4 class="font-bold text-lg mb-2">Curated Script Packages & Frameworks</h4>
-                        </div>
-                        <div class="bg-black/30 rounded-xl p-6 border border-halloween-orange/20">
-                            <i class="fas fa-check-circle text-halloween-green text-2xl mb-3"></i>
-                            <h4 class="font-bold text-lg mb-2">Professional Vehicle & EUP Packs</h4>
-                        </div>
-                        <div class="bg-black/30 rounded-xl p-6 border border-halloween-purple/20">
-                            <i class="fas fa-check-circle text-halloween-green text-2xl mb-3"></i>
-                            <h4 class="font-bold text-lg mb-2">Custom GFX & Branding Materials</h4>
-                        </div>
-                        <div class="bg-black/30 rounded-xl p-6 border border-halloween-orange/20">
-                            <i class="fas fa-check-circle text-halloween-green text-2xl mb-3"></i>
-                            <h4 class="font-bold text-lg mb-2">Performance Testing & Optimization</h4>
-                        </div>
-                        <div class="bg-black/30 rounded-xl p-6 border border-halloween-purple/20">
-                            <i class="fas fa-check-circle text-halloween-green text-2xl mb-3"></i>
-                            <h4 class="font-bold text-lg mb-2">Discord Bot Integration & Setup</h4>
-                        </div>
-                        <div class="bg-black/30 rounded-xl p-6 border border-halloween-orange/20">
-                            <i class="fas fa-check-circle text-halloween-green text-2xl mb-3"></i>
-                            <h4 class="font-bold text-lg mb-2">Tebex Store Configuration (Optional)</h4>
-                        </div>
-                        <div class="bg-black/30 rounded-xl p-6 border border-halloween-purple/20">
-                            <i class="fas fa-check-circle text-halloween-green text-2xl mb-3"></i>
-                            <h4 class="font-bold text-lg mb-2">Documentation & Quick-Start Guides</h4>
-                        </div>
+                    <div class="bg-black/30 rounded-xl p-6">
+                        <i class="fas fa-check-circle text-pink-500 text-2xl mb-3"></i>
+                        <h4 class="font-bold mb-2">Premium Scripts</h4>
+                        <p class="text-gray-400 text-sm">Curated frameworks & packages</p>
                     </div>
-
-                    <button onclick="window.location.href='https://discord.gg/VdMcJRpmzZ'" class="w-full btn-halloween py-5 rounded-xl font-bold text-xl">
-                        <i class="fab fa-discord mr-3"></i>Open Support Ticket for Price/Quote
-                    </button>
+                    <div class="bg-black/30 rounded-xl p-6">
+                        <i class="fas fa-check-circle text-purple-500 text-2xl mb-3"></i>
+                        <h4 class="font-bold mb-2">Custom Assets</h4>
+                        <p class="text-gray-400 text-sm">Vehicles, EUP & GFX included</p>
+                    </div>
+                    <div class="bg-black/30 rounded-xl p-6">
+                        <i class="fas fa-check-circle text-pink-500 text-2xl mb-3"></i>
+                        <h4 class="font-bold mb-2">Optimization</h4>
+                        <p class="text-gray-400 text-sm">Performance tested & tuned</p>
+                    </div>
                 </div>
+                
+                <button onclick="window.location.href='https://discord.gg/VdMcJRpmzZ'" class="w-full btn-primary py-5 rounded-xl font-bold text-lg">
+                    <i class="fab fa-discord mr-2"></i>Get Custom Quote
+                </button>
             </div>
         </div>
     </section>
 
     <!-- Custom Assets -->
-    <section id="assets" class="py-24 halloween-gradient relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-20">
-                <div class="text-6xl mb-4">🎨</div>
-                <h2 class="text-6xl font-creepster text-halloween-orange spooky-glow mb-6">Custom FiveM Assets</h2>
-                <p class="text-xl text-gray-400">Professional Quality Customization</p>
+    <section id="assets" class="py-24 gradient-bg">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-black mb-4 section-title">Custom Assets</h2>
+                <p class="text-xl text-gray-400">Professional customization services</p>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Weapon Tunes -->
-                <div class="card-halloween rounded-3xl p-8 relative z-10">
+                <div class="card rounded-3xl p-8">
                     <div class="text-5xl mb-4">🔫</div>
-                    <h3 class="text-2xl font-bold text-halloween-orange mb-3">Custom Weapon Tunes</h3>
-                    <div class="text-3xl font-black text-white mb-4">$25</div>
-                    <p class="text-gray-300 mb-6 leading-relaxed">
-                        Realistic, balanced weapon tuning — recoil & ballistics, damage profiles, attachments, 
-                        sound/muzzle effects, ammo types, and server-specific tweaks.
+                    <h3 class="text-2xl font-bold mb-2">Weapon Tunes</h3>
+                    <div class="text-3xl font-black text-purple-400 mb-4">$25</div>
+                    <p class="text-gray-400 mb-6">
+                        Realistic weapon tuning with balanced recoil, damage profiles, and custom effects.
                     </p>
-                    <button onclick="window.location.href='https://whop.com/checkout/plan_PjFvDPPZKqFY1?d2c=true'" class="w-full btn-halloween py-4 rounded-xl font-bold">
-                        Purchase Item
+                    <button onclick="window.location.href='https://whop.com/checkout/plan_PjFvDPPZKqFY1?d2c=true'" class="w-full bg-purple-600 hover:bg-purple-700 py-3 rounded-xl font-bold transition">
+                        Purchase
                     </button>
                 </div>
 
                 <!-- Vehicle Tunes -->
-                <div class="card-halloween rounded-3xl p-8 relative z-10">
+                <div class="card rounded-3xl p-8">
                     <div class="text-5xl mb-4">🚗</div>
-                    <h3 class="text-2xl font-bold text-halloween-purple mb-3">Custom Vehicle Tunes</h3>
-                    <div class="text-3xl font-black text-white mb-4">$40</div>
-                    <p class="text-gray-300 mb-6 leading-relaxed">
-                        Custom vehicle tuning with extra seats, bulletproofing, sticky handling, speed & acceleration 
-                        adjustments, flying tune, lights & sounds, liveries, and full performance optimization.
+                    <h3 class="text-2xl font-bold mb-2">Vehicle Tunes</h3>
+                    <div class="text-3xl font-black text-pink-400 mb-4">$40</div>
+                    <p class="text-gray-400 mb-6">
+                        Custom handling, speed adjustments, extra features, and full optimization.
                     </p>
-                    <button onclick="window.location.href='https://whop.com/checkout/plan_qWbjWUGhai3Kz?d2c=true'" class="w-full bg-gradient-to-r from-halloween-purple to-purple-700 py-4 rounded-xl font-bold transition-all">
-                        Purchase Item
+                    <button onclick="window.location.href='https://whop.com/checkout/plan_qWbjWUGhai3Kz?d2c=true'" class="w-full btn-primary py-3 rounded-xl font-bold">
+                        Purchase
                     </button>
                 </div>
 
                 <!-- GFX Design -->
-                <div class="card-halloween rounded-3xl p-8 relative z-10">
+                <div class="card rounded-3xl p-8">
                     <div class="text-5xl mb-4">🎨</div>
-                    <h3 class="text-2xl font-bold text-halloween-green mb-3">Custom GFX Design</h3>
-                    <div class="text-3xl font-black text-white mb-4">$10</div>
-                    <p class="text-gray-300 mb-6 leading-relaxed">
-                        Custom GFX & Design: logos, banners, thumbnails, UI, social media graphics, website design, 
-                        and full branding packages to make your server stand out.
+                    <h3 class="text-2xl font-bold mb-2">GFX Design</h3>
+                    <div class="text-3xl font-black text-purple-400 mb-4">$10</div>
+                    <p class="text-gray-400 mb-6">
+                        Logos, banners, UI elements, and complete branding packages.
                     </p>
-                    <button onclick="window.location.href='https://whop.com/checkout/plan_DyYzBIPE2xQfm?d2c=true'" class="w-full bg-gradient-to-r from-halloween-green to-green-700 py-4 rounded-xl font-bold transition-all">
-                        Purchase Item
+                    <button onclick="window.location.href='https://whop.com/checkout/plan_DyYzBIPE2xQfm?d2c=true'" class="w-full bg-purple-600 hover:bg-purple-700 py-3 rounded-xl font-bold transition">
+                        Purchase
                     </button>
                 </div>
 
                 <!-- EUP/Clothing -->
-                <div class="card-halloween rounded-3xl p-8 relative z-10">
+                <div class="card rounded-3xl p-8">
                     <div class="text-5xl mb-4">👕</div>
-                    <h3 class="text-2xl font-bold text-halloween-orange mb-3">Custom EUP/Clothing</h3>
-                    <div class="text-3xl font-black text-white mb-4">$5<span class="text-lg">/piece</span></div>
-                    <p class="text-gray-300 mb-6 leading-relaxed">
-                        Custom EUP & Clothing: uniforms, tactical gear, medical outfits, civilian wear, business attire, 
-                        staff uniforms, themed collections, accessories, and high-quality realistic designs.
+                    <h3 class="text-2xl font-bold mb-2">EUP/Clothing</h3>
+                    <div class="text-3xl font-black text-pink-400 mb-4">$5<span class="text-lg">/pc</span></div>
+                    <p class="text-gray-400 mb-6">
+                        Custom uniforms, tactical gear, civilian wear, and accessories.
                     </p>
-                    <button onclick="window.location.href='https://whop.com/checkout/plan_9LqXewxlhxGXu?d2c=true'" class="w-full btn-halloween py-4 rounded-xl font-bold">
-                        Purchase Item
+                    <button onclick="window.location.href='https://whop.com/checkout/plan_9LqXewxlhxGXu?d2c=true'" class="w-full btn-primary py-3 rounded-xl font-bold">
+                        Purchase
                     </button>
                 </div>
 
                 <!-- Custom Scripts -->
-                <div class="card-halloween rounded-3xl p-8 relative z-10">
+                <div class="card rounded-3xl p-8">
                     <div class="text-5xl mb-4">💻</div>
-                    <h3 class="text-2xl font-bold text-halloween-purple mb-3">Custom Scripts & Development</h3>
-                    <div class="text-2xl font-black text-white mb-4">Custom Quote</div>
-                    <p class="text-gray-300 mb-6 leading-relaxed">
-                        Custom scripts and systems: roleplay frameworks, jobs, economy, admin tools, gameplay features, 
-                        QoL improvements, framework integration, and performance optimization.
+                    <h3 class="text-2xl font-bold mb-2">Custom Scripts</h3>
+                    <div class="text-2xl font-black text-purple-400 mb-4">Quote</div>
+                    <p class="text-gray-400 mb-6">
+                        Roleplay frameworks, jobs, economy systems, and custom features.
                     </p>
-                    <button onclick="window.location.href='https://discord.gg/VdMcJRpmzZ'" class="w-full bg-gradient-to-r from-halloween-purple to-purple-700 py-4 rounded-xl font-bold transition-all">
-                        <i class="fab fa-discord mr-2"></i>Open Ticket for Price
+                    <button onclick="window.location.href='https://discord.gg/VdMcJRpmzZ'" class="w-full bg-purple-600 hover:bg-purple-700 py-3 rounded-xl font-bold transition">
+                        Get Quote
                     </button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-24 bg-black/50 relative">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- About -->
+    <section id="about" class="py-24">
+        <div class="max-w-4xl mx-auto px-6">
             <div class="text-center mb-16">
-                <div class="text-6xl mb-4">🏢</div>
-                <h2 class="text-6xl font-creepster text-halloween-orange spooky-glow mb-6">About CIVSYNC Hosting</h2>
+                <h2 class="text-5xl font-black mb-4 section-title">About CivSync</h2>
             </div>
-
-            <div class="card-halloween rounded-3xl p-12 relative z-10">
-                <div class="prose prose-invert max-w-none">
-                    <p class="text-xl text-gray-300 leading-relaxed mb-6">
-                        At <span class="text-halloween-orange font-bold">CIVSYNC Hosting</span>, we specialize in delivering high-performance, 
-                        reliable, and scalable server solutions for gamers, developers, and businesses alike. Our mission is to provide a 
-                        seamless hosting experience, combining top-notch hardware with expert support to ensure your projects run smoothly 
-                        around the clock.
-                    </p>
-                    
-                    <p class="text-xl text-gray-300 leading-relaxed mb-6">
-                        We take pride in offering <span class="text-halloween-purple font-bold">prebuilt FiveM servers</span>, optimized for 
-                        speed, stability, and maximum performance. Whether you're starting a new roleplay community, managing a growing server, 
-                        or just testing your projects, our ready-to-go FiveM setups save you time and let you focus on what matters most — 
-                        your players and your community.
-                    </p>
-                    
-                    <p class="text-xl text-gray-300 leading-relaxed">
-                        With a focus on <span class="text-halloween-green font-bold">quality, reliability, and scalability</span>, CIVSYNC Hosting 
-                        is your go-to partner for hosting that grows with you. Join our network today and experience hosting the way it was meant 
-                        to be: fast, secure, and effortless.
-                    </p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-                    <div class="bg-black/30 rounded-xl p-6 border border-halloween-orange/20 text-center">
+            
+            <div class="card rounded-3xl p-12">
+                <p class="text-xl text-gray-300 leading-relaxed mb-6">
+                    At <span class="text-purple-400 font-bold">CIVSYNC Hosting</span>, we specialize in delivering 
+                    high-performance, reliable, and scalable server solutions for gamers, developers, and businesses alike.
+                </p>
+                <p class="text-xl text-gray-300 leading-relaxed mb-6">
+                    We offer <span class="text-pink-400 font-bold">prebuilt FiveM servers</span>, optimized for speed, 
+                    stability, and maximum performance. Whether starting a new community or growing an existing one, our 
+                    ready-to-go setups let you focus on your players.
+                </p>
+                <p class="text-xl text-gray-300 leading-relaxed">
+                    With a focus on quality, reliability, and scalability, CIVSYNC Hosting is your partner for hosting 
+                    that grows with you. Experience hosting the way it should be: fast, secure, and effortless.
+                </p>
+                
+                <div class="grid md:grid-cols-3 gap-6 mt-12">
+                    <div class="bg-black/30 rounded-xl p-6 text-center">
                         <div class="text-4xl mb-3">⚡</div>
-                        <h4 class="text-xl font-bold text-halloween-orange mb-2">High Performance</h4>
-                        <p class="text-gray-400">Top-tier hardware for smooth gameplay</p>
+                        <h4 class="font-bold text-lg mb-2">High Performance</h4>
+                        <p class="text-gray-400 text-sm">Top-tier hardware</p>
                     </div>
-                    <div class="bg-black/30 rounded-xl p-6 border border-halloween-purple/20 text-center">
+                    <div class="bg-black/30 rounded-xl p-6 text-center">
                         <div class="text-4xl mb-3">🛡️</div>
-                        <h4 class="text-xl font-bold text-halloween-purple mb-2">Reliable & Secure</h4>
-                        <p class="text-gray-400">99.9% uptime with DDoS protection</p>
+                        <h4 class="font-bold text-lg mb-2">Secure & Reliable</h4>
+                        <p class="text-gray-400 text-sm">99.9% uptime</p>
                     </div>
-                    <div class="bg-black/30 rounded-xl p-6 border border-halloween-green/20 text-center">
+                    <div class="bg-black/30 rounded-xl p-6 text-center">
                         <div class="text-4xl mb-3">📈</div>
-                        <h4 class="text-xl font-bold text-halloween-green mb-2">Scalable Solutions</h4>
-                        <p class="text-gray-400">Grow with your community's needs</p>
+                        <h4 class="font-bold text-lg mb-2">Scalable</h4>
+                        <p class="text-gray-400 text-sm">Grow with ease</p>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section class="py-24 gradient-bg">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-5xl font-black mb-6 section-title">Ready to Get Started?</h2>
+            <p class="text-xl text-gray-400 mb-12">Join our Discord for support and custom quotes</p>
+            <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                <a href="https://discord.gg/VdMcJRpmzZ" class="btn-primary px-10 py-5 rounded-full font-bold text-lg inline-block">
+                    <i class="fab fa-discord mr-2"></i>Join Discord
+                </a>
+                <a href="mailto:civsynchosting@gmail.com" class="border-2 border-purple-500 px-10 py-5 rounded-full font-bold text-lg hover:bg-purple-500/20 transition inline-block">
+                    <i class="fas fa-envelope mr-2"></i>Email Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
