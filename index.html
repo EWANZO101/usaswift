@@ -186,7 +186,7 @@
     <div class="fog-effect"></div>
     
     <!-- Loading Screen -->
-    <div id="loading-screen" class="fixed inset-0 bg-black z-50 flex items-center justify-center">
+    <div id="loading-screen" class="fixed inset-0 bg-black z-50 flex items-center justify-center transition-opacity duration-500">
         <div class="text-center">
             <div class="text-8xl mb-6 pumpkin-float">🎃</div>
             <div class="loading-spinner-halloween mx-auto mb-6"></div>
@@ -379,15 +379,30 @@
 
     <!-- Scripts -->
     <script>
-        // Loading Screen
-        window.addEventListener('load', function() {
-            setTimeout(() => {
-                document.getElementById('loading-screen').style.opacity = '0';
+        // Loading Screen - Execute immediately
+        (function() {
+            const loadingScreen = document.getElementById('loading-screen');
+            
+            // Hide loading screen after page loads
+            window.addEventListener('load', function() {
                 setTimeout(() => {
-                    document.getElementById('loading-screen').style.display = 'none';
-                }, 500);
-            }, 1500);
-        });
+                    loadingScreen.style.opacity = '0';
+                    setTimeout(() => {
+                        loadingScreen.style.display = 'none';
+                    }, 500);
+                }, 800);
+            });
+            
+            // Fallback - hide after 3 seconds regardless
+            setTimeout(() => {
+                if (loadingScreen && loadingScreen.style.display !== 'none') {
+                    loadingScreen.style.opacity = '0';
+                    setTimeout(() => {
+                        loadingScreen.style.display = 'none';
+                    }, 500);
+                }
+            }, 3000);
+        })();
 
         // Mobile Menu
         const mobileMenuButton = document.getElementById('mobile-menu-button');
